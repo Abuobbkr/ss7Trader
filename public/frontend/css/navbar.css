@@ -1,0 +1,51 @@
+/* Navbar Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(1, 7, 39, 0.059);
+}
+
+.navbar.scrolled {
+    background-color: white;
+}
+
+.navbarcolor {
+    background-color: rgba(1, 7, 39, 0.059);
+}
+
+.hoverlinks {
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.hoverlinks:hover {
+    color: var(--primary-color);
+}
+
+.hoverlinks:hover .fa-arrow-down {
+    color: var(--primary-color);
+}
+
+.hamburger {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    color: inherit;
+}
+
+/* Mobile adjustments */
+@media (max-width: 375px) {
+    .logo {
+        height: 30px;
+    }
+
+    .navbar {
+        padding: 10px 15px !important;
+    }
+
+    .hamburger {
+        font-size: 1.5rem;
+    }
+}

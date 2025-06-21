@@ -1,0 +1,61 @@
+  .number {
+      text-decoration: none;
+      color: var(--primary-color);
+      cursor: pointer;
+  }
+
+  .btn {
+      width: 140px;
+      display: flex;
+      justify-content: center;
+      border: 3px solid var(--primary-color);
+      font-weight: 600;
+      color: var(--primary-color);
+  }
+
+  .btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+      width: 130px;
+  }
+
+  .custom-input {
+      outline: none;
+      transition: border-color 0.3s ease;
+  }
+
+  .custom-input:focus {
+      border-color: var(--primary-color);
+      box-shadow: none;
+  }
+
+  .custom-card {
+      padding: 1.5rem;
+  }
+
+  .arrow-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: black;
+      transition: fill 0.3s ease;
+  }
+
+  .logo {
+      max-width: 250px;
+      width: 100%;
+  }
+
+  .logo2 {
+      max-width: 310px;
+      width: 100%;
+  }
+
+  .Muffin-group {
+      color: var(--primary-color);
+  }
+
+  .Muffin-group:hover {
+      color: #cc0447;
+      text-decoration: underline !important;
+      cursor: pointer;
+  }

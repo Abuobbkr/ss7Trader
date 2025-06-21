@@ -1,0 +1,9 @@
+ :root {
+   --primary-color: #ff0054;
+   --green-color: #00B050;
+
+ }
+ body {
+   font-family: 'Roboto Flex', sans-serif;
+   z-index: 900;
+ }

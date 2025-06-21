@@ -1,0 +1,67 @@
+#table-loading-overlay {
+    position: absolute;
+    /* Or use absolute if you only want to cover table area */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1050;
+}
+
+/*  */
+
+.overlay-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.overlay-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+
+.table-section-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.entity-name {
+    padding-left: 2rem;
+}
+
+.bg-admin {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.bg-manager {
+    background-color: rgba(40, 167, 69, 0.1);
+}
+
+.mandatory-permission {
+    background-color: rgba(255, 193, 7, 0.1);
+    position: relative;
+}
+
+.bi-check-circle-fill.text-success {
+    color: #28a745;
+}
+
+.bi-x-circle-fill.text-danger {
+    color: #dc3545;
+}
+
+.bi-star-fill.text-warning {
+    color: #ffc107;
+}
