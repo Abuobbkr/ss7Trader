@@ -5,6 +5,20 @@ use App\Http\Controllers\SignalController;
 use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/all/clear', function () {
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('route:cache');
+    Artisan::call('view:cache');
+    Artisan::call('optimize');
+
+    return '✅ All caches cleared and optimized successfully!';
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
