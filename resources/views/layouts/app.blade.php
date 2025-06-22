@@ -30,7 +30,7 @@
 
     <!-- Plugin CSS -->
     <link href="{{ asset('libs/node-waves/waves.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('libs/simplebar/simplebar.min.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('libs/simplebar/simplebar.min.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/@simonwep/pickr/themes/nano.min.css') }}" rel="stylesheet">
     <link href="{{ asset('libs/choices.js/public/assets/styles/choices.min.css') }}" rel="stylesheet">
@@ -50,6 +50,15 @@
         @include('partials.footer')
     </div>
 
+    <div>
+        <div class="d-none" id="crm-main"></div>
+    </div>
+    <div class="d-none" id="crm-total-customers"></div>
+    <div class="d-none" id="crm-total-revenue"></div>
+    <div id="crm-conversion-ratio" class="d-none"></div>
+    <div class="d-none" id="crm-total-deals"></div>
+    <div class="d-none" id="crm-revenue-analytics"></div>
+    <div class="d-none" id="crm-profits-earned"></div>
     <!-- Scroll Top & Overlay -->
     <div class="scrollToTop">
         <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
@@ -64,18 +73,18 @@
     <script src="{{ asset('libs/@popperjs/core/umd/popper.min.js') }}" defer></script>
     <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('libs/node-waves/waves.min.js') }}" defer></script>
-    <script src="{{ asset('libs/simplebar/simplebar.min.js') }}" defer></script>
+    <!-- <script src="{{ asset('libs/simplebar/simplebar.min.js') }}" defer></script> -->
     <script src="{{ asset('libs/@simonwep/pickr/pickr.es5.min.js') }}" defer></script>
     <script src="{{ asset('libs/jsvectormap/js/jsvectormap.min.js') }}" defer></script>
     <script src="{{ asset('libs/jsvectormap/maps/world-merc.js') }}" defer></script>
     <script src="{{ asset('libs/apexcharts/apexcharts.min.js') }}" defer></script>
-    <script src="{{ asset('libs/chart.js/chart.min.js') }}" defer></script>
+    <!-- <script src="{{ asset('libs/chart.js/chart.min.js') }}" defer></script> -->
     <script src="{{ asset('libs/choices.js/public/assets/scripts/choices.min.js') }}" defer></script>
 
     <!-- Custom JS -->
     <script src="{{ asset('js/defaultmenu.min.js') }}" defer></script>
     <script src="{{ asset('js/sticky.js') }}" defer></script>
-    <script src="{{ asset('js/simplebar.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/simplebar.js') }}" defer></script> -->
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/crm-dashboard.js') }}" defer></script>
     <script src="{{ asset('js/custom-switcher.min.js') }}" defer></script>
