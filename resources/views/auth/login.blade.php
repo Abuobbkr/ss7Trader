@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/login.css') }}"> {{-- Link to your custom CSS --}}
 </head>
 <style>
+    
 /* Custom CSS for Attractive Login Page */
 body {
     /* Gradient Background */
