@@ -23,7 +23,7 @@ class SubscriberSeeder extends Seeder
             $subscribers[] = [
                 'username' => $username,
                 'email' => $email,
-                'password' => Hash::make('password' . $i),
+                'password' => 'password',
                 'expire_date' => Carbon::now()->addDays(rand(15, 90)),
                 'created_at' => now(),
                 'updated_at' => now(),
