@@ -104,11 +104,11 @@ class SignalController extends Controller
     {
         $validated = $request->validate([
             'pair_name' => 'required|string|max:255',
-            'market_type' => 'required|string|in:forex,crypto,stocks',
+            'market_type' => 'required|string|in:forex,crypto,stock',
             'entry_price' => 'required|numeric|min:0.00001',
             'stop_loss' => 'required|numeric|min:0.00001',
             'take_profit' => 'required|numeric|min:0.00001',
-            'signal_type' => 'required|string|in:Buy/Long,Sell/Short',
+            'signal_type' => 'required|string|in:buy,sell',
             'group_type' => 'required|string|in:free,premium,both',
             'is_open' => 'boolean'
         ]);

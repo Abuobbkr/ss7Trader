@@ -12,8 +12,8 @@
                             <label for="signalTypeFilter" class="form-label">Filter by Signal Type:</label>
                             <select id="signalTypeFilter" class="form-select" onchange="filterSignals()">
                                 <option value="">All</option>
-                                <option value="Buy/Long">Buy/Long</option>
-                                <option value="Sell/Short">Sell/Short</option>
+                                <option value="forex">Forex</option>
+                                <option value="crypto">Crypto</option>
                             </select>
                         </div>
                         <table class="table m-0">
@@ -186,7 +186,7 @@
                 function filterSignals() {
                     let type = document.getElementById('signalTypeFilter').value;
 
-                    fetch(`{{ route('signals.filter') }}?signal_type=${type}`)
+                    fetch(`{{ route('signals.filter') }}?market_type=${type}`)
                         .then(res => res.json())
                         .then(data => {
                             document.querySelector('tbody').innerHTML = data.html;

@@ -19,8 +19,8 @@ class SignalController extends Controller
     {
         $query = Signal::query();
 
-        if ($request->has('signal_type') && $request->signal_type != '') {
-            $query->where('signal_type', $request->signal_type);
+        if ($request->has('market_type') && $request->market_type != '') {
+            $query->where('market_type', $request->market_type);
         }
 
         $signals = $query->latest()->paginate(10); // adjust as needed

@@ -13,6 +13,7 @@ class Signal extends Model
     protected $fillable = [
         'pair_name',
         'signal_type',
+        'market_type',
         'entry_price',
         'stop_loss',
         'take_profit',

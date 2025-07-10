@@ -60,8 +60,8 @@
                                         <div class="col-md-4">
                                             <label class="form-label">Signal Type <span class="text-danger">*</span></label>
                                             <select class="form-select" name="signal_type">
-                                                <option value="Buy/Long">Buy/Long</option>
-                                                <option value="Sell/Short">Sell/Short</option>
+                                                <option value="buy">Buy/Long</option>
+                                                <option value="sell">Sell/Short</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4">
