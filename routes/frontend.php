@@ -11,6 +11,7 @@ Route::post('subscriber/login', [AuthController::class, 'login'])->name('subscri
 
 
 Route::get("/subscriber/login", [AuthController::class, 'showLoginForm'])->name('subscriber.login');
+Route::get('/signals/filter', [SignalController::class, 'filter'])->name('signals.filter');
 
 Route::post('subscriber/logout', function () {
     session()->forget('subscriber_user_id');

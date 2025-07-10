@@ -48,7 +48,7 @@ class SubscriberController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $Subscribers = Subscriber::get();
+            $Subscribers = Subscriber::orderBy('id','desc')->get();
 
             return DataTables::of($Subscribers)
                 ->addIndexColumn()
