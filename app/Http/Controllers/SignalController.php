@@ -98,6 +98,7 @@ class SignalController extends Controller
             ->rawColumns(['IsActive', 'Action'])
             ->make(true);
     }
+    
 
 
     public function store(Request $request)
