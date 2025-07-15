@@ -18,7 +18,10 @@ class Signal extends Model
         'stop_loss',
         'take_profit',
         'group_type',
-        'is_open'
+        'is_open',
+        'entry_price_premium',
+        'stop_loss_premium',
+        'take_profit_premium',
     ];
 
     // If you're using timestamps (created_at, updated_at)
@@ -30,5 +33,9 @@ class Signal extends Model
         'stop_loss' => 'float',
         'take_profit' => 'float',
         'is_open' => 'boolean',
+        // New premium switch fields cast to boolean
+        'entry_price_premium' => 'boolean',
+        'stop_loss_premium' => 'boolean',
+        'take_profit_premium' => 'boolean',
     ];
 }

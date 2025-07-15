@@ -47,6 +47,7 @@
                 { data: 'stop_loss', name: 'stop_loss' },
                 { data: 'take_profit', name: 'take_profit' },
                 { data: 'group_type', name: 'group_type' },
+                { data: 'market_type', name: 'market_type' },
                 { data: 'status', name: 'status' },
                 {
                     data: 'action',
@@ -54,7 +55,7 @@
                     orderable: false,
                     searchable: false,
                     render: function (data, type, row) {
-                        return data;
+                        // return data;
                         return '<button class="btn btn-sm btn-edit" data-id="' + row.id + '">✏️</button>' +
                             ' <button class="btn btn-sm btn-delete" data-id="' + row.id + '">🗑️</button>';
                     }
@@ -176,7 +177,7 @@
                 if (result.isConfirmed) {
 
                     // Show loading indicator
-                  
+
 
                     $.ajax({
                         url: `/signals/${signalId}`,
@@ -252,11 +253,17 @@
                 $('[name="group_type"]').val(response.group_type);
                 $('#is-open-switch').prop('checked', response.is_open);
 
+                // Populate the new premium switches based on the response data
+                $('#entry-price-switch').prop('checked', response.entry_price_premium);
+                $('#stop-loss-switch').prop('checked', response.stop_loss_premium);
+                $('#take-profit-switch').prop('checked', response.take_profit_premium);
+
                 // Set edit mode
                 $('#signal-form').attr('data-mode', 'edit').attr('data-id', signalId);
-                $('#signalModal').modal('show');
+                $('#SignalModal').modal('show'); // Corrected modal ID from signalModal to SignalModal
             });
         });
+
 
 
 
@@ -380,9 +387,12 @@
                     take_profit: $('[name="take_profit"]').val(),
                     group_type: $('[name="group_type"]').val(),
                     is_open: $('#is-open-switch').is(':checked') ? 1 : 0,
+                    entry_price_premium: $('#entry-price-switch').is(':checked') ? 1 : 0,
+                    stop_loss_premium: $('#stop-loss-switch').is(':checked') ? 1 : 0,
+                    take_profit_premium: $('#take-profit-switch').is(':checked') ? 1 : 0,
                     _token: $('meta[name="csrf-token"]').attr('content')
                 };
-
+                console.log('Form data:', formData);
                 // Determine if edit or create
                 const isEditMode = $(form).attr('data-mode') === 'edit';
                 const signalId = $(form).attr('data-id');
@@ -396,11 +406,11 @@
                     url: url,
                     type: method,
                     data: formData,
-                    
+
                     success: function (response) {
                         if (response.success) {
                             toastr.success(response.message);
-                            $('#signalModal').modal('hide');
+                            $('#SignalModal').modal('hide');
                             // Reload DataTable if you're using it
                             if ($.fn.DataTable.isDataTable('#signals-table')) {
                                 $('#signals-table').DataTable().ajax.reload(null, false);

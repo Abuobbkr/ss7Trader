@@ -54,7 +54,7 @@
                     orderable: false,
                     searchable: false,
                     render: function (data, type, row) {
-                        return data;
+                        // return data;
                         return '<button class="btn btn-sm btn-edit" data-id="' + row.id + '">✏️</button>' +
                             ' <button class="btn btn-sm btn-delete" data-id="' + row.id + '">🗑️</button>';
                     }
@@ -125,7 +125,7 @@
 
 
         // Edit button click handler
-        
+
 
         // Form submission handler (for both create and update)
 
@@ -167,9 +167,9 @@
                             if (response.success) {
                                 toastr.success(response.message);
                                 // Reload DataTable
-                                if ($.fn.DataTable.isDataTable('#signals-table')) {
-                                    $('#signals-table').DataTable().ajax.reload(null, false);
-                                }
+                                // if ($.fn.DataTable.isDataTable('#signals-table')) {
+                                $('#signals-table').DataTable().ajax.reload(null, false);
+                                // }
                             } else {
                                 toastr.error(response.message);
                             }
@@ -327,9 +327,9 @@
                             if (response.success) {
                                 toastr.success(response.message);
                                 $('#SubscriberModal').modal('hide');
-                                if ($.fn.DataTable.isDataTable('#subscribers-table')) {
-                                    $('#subscribers-table').DataTable().ajax.reload(null, false);
-                                }
+                                // if ($.fn.DataTable.isDataTable('#subscribers-table')) {
+                                $('#Subscribers-table').DataTable().ajax.reload();
+                                // }
                                 form.reset();
                             } else {
                                 toastr.error(response.message);

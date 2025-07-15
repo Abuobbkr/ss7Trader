@@ -78,18 +78,47 @@
                                     <div class="row mb-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Entry Price <span class="text-danger">*</span></label>
-                                            <input type="number" step="0.00001" class="form-control" name="entry_price">    
+                                            <div class="input-group">
+                                                <input type="number" step="0.00001" class="form-control" name="entry_price">
+                                                <div class="input-group-text">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="entry-price-switch" name="entry_price_premium" checked>
+                                                        <label class="form-check-label visually-hidden"
+                                                            for="entry-price-switch">Entry Price Premium</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label">Stop Loss <span class="text-danger">*</span></label>
-                                            <input type="number" step="0.00001" class="form-control" name="stop_loss">
+                                            <div class="input-group">
+                                                <input type="number" step="0.00001" class="form-control" name="stop_loss">
+                                                <div class="input-group-text">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="stop-loss-switch" name="stop_loss_premium" checked>
+                                                        <label class="form-check-label visually-hidden"
+                                                            for="stop-loss-switch">Stop Loss Premium</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
                                             <label class="form-label">Take Profit <span class="text-danger">*</span></label>
-                                            <input type="number" step="0.00001" class="form-control" name="take_profit">
+                                            <div class="input-group">
+                                                <input type="number" step="0.00001" class="form-control" name="take_profit">
+                                                <div class="input-group-text">
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="take-profit-switch" name="take_profit_premium" checked>
+                                                        <label class="form-check-label visually-hidden"
+                                                            for="take-profit-switch">Take Profit Premium</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
 
                                     <div class="row mb-3">
                                         <div class="col-md-6">
@@ -142,6 +171,7 @@
                                         <th>Stop Loss</th>
                                         <th>Take Profit</th>
                                         <th>Group Type</th>
+                                        <th>Market Type</th>
                                         <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
