@@ -90,7 +90,8 @@ class SubscriberController extends Controller
                     $statusBtn = $Subscriber->is_open
                         ? '<button class="btn btn-sm btn-secondary toggle-status" data-id="' . $Subscriber->id . '">Close</button>'
                         : '<button class="btn btn-sm btn-success toggle-status" data-id="' . $Subscriber->id . '">Reopen</button>';
-                    return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
+                    // return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
+                    return $editBtn . ' ' . $deleteBtn ;
                 })
                 ->rawColumns(['action'])
                 ->make(true);

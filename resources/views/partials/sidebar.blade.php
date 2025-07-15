@@ -57,7 +57,13 @@
                     </a>
                 </li>
 
-                <!-- Operations -->
+                <!-- Asset -->
+                 <li class="slide">
+                    <a href="{{ route('assets.index') }}" class="side-menu__item">
+                        <i class="bx bx-user-check side-menu__icon"></i>
+                        <span class="side-menu__label">Assets</span>
+                    </a>
+                </li>
                 
 
             </ul>

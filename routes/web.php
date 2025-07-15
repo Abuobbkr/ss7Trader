@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignalController;
@@ -16,7 +17,13 @@ Route::get('/all/clear', function () {
     Artisan::call('view:cache');
     Artisan::call('optimize');
 
-    return '✅ All caches cleared and optimized successfully!';
+    return 'All caches cleared and optimized successfully!';
+});
+
+Route::get('/all/storage/link', function () {
+    Artisan::call('storage:link');
+
+    return 'All storage linked and optimized successfully!';
 });
 
 
@@ -28,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/',[DashboardController::class,'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 
 
@@ -48,6 +55,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/edit', [SubscriberController::class, 'edit'])->name('subscribers.edit');
         Route::put('/{id}', [SubscriberController::class, 'update'])->name('subscribers.update');
         Route::delete('/{id}', [SubscriberController::class, 'destroy'])->name('subscribers.destroy');
+    });
+
+
+    Route::prefix('assets')->group(function () {
+        Route::get('/', [AssetController::class, 'index'])->name('assets.index');
+        Route::get('/getData', [AssetController::class, 'getData'])->name('assets.getData');
+        Route::post('/', [AssetController::class, 'store'])->name('assets.store');
+        Route::get('/{id}/edit', [AssetController::class, 'edit'])->name('assets.edit');
+        Route::put('/{id}', [AssetController::class, 'update'])->name('assets.update');
+        Route::delete('/{id}', [AssetController::class, 'destroy'])->name('assets.destroy');
     });
 });
 

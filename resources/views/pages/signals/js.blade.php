@@ -54,6 +54,7 @@
                     orderable: false,
                     searchable: false,
                     render: function (data, type, row) {
+                        return data;
                         return '<button class="btn btn-sm btn-edit" data-id="' + row.id + '">✏️</button>' +
                             ' <button class="btn btn-sm btn-delete" data-id="' + row.id + '">🗑️</button>';
                     }

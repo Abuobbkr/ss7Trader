@@ -61,7 +61,8 @@ class SignalController extends Controller
                     $statusBtn = $signal->is_open
                         ? '<button class="btn btn-sm btn-secondary toggle-status" data-id="' . $signal->id . '">Close</button>'
                         : '<button class="btn btn-sm btn-success toggle-status" data-id="' . $signal->id . '">Reopen</button>';
-                    return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
+                    // return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
+                    return $editBtn . ' ' . $deleteBtn ;
                 })
                 ->rawColumns(['signal_type', 'status', 'group_type', 'action'])
                 ->make(true);
