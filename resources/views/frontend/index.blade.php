@@ -14,6 +14,7 @@
                                 <option value="">All</option>
                                 <option value="forex">Forex</option>
                                 <option value="crypto">Crypto</option>
+                                <option value="stock">Stock</option>
                             </select>
                         </div>
                         <table class="table m-0">

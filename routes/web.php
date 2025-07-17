@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdsController;
 use App\Http\Controllers\AssetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
@@ -15,7 +16,7 @@ Route::get('/all/clear', function () {
     Artisan::call('config:cache');
     Artisan::call('route:cache');
     Artisan::call('view:cache');
-    Artisan::call('optimize');
+    Artisan::call('optimize:clear');
 
     return 'All caches cleared and optimized successfully!';
 });
@@ -65,6 +66,16 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}/edit', [AssetController::class, 'edit'])->name('assets.edit');
         Route::put('/{id}', [AssetController::class, 'update'])->name('assets.update');
         Route::delete('/{id}', [AssetController::class, 'destroy'])->name('assets.destroy');
+    });
+
+    Route::prefix('ads')->group(function () {
+        Route::get('/', [AdsController::class, 'index'])->name('ads.index');
+        Route::get('/getSidebarData', [AdsController::class, 'getSidebarData'])->name('ads.getSidebarData');
+        Route::get('/getBannerData', [AdsController::class, 'getBannerData'])->name('ads.getBannerData');
+        Route::post('/', [AdsController::class, 'store'])->name('ads.store');
+        Route::get('/{id}/edit', [AdsController::class, 'edit'])->name('ads.edit');
+        Route::put('/{id}', [AdsController::class, 'update'])->name('ads.update');
+        Route::delete('/{id}', [AdsController::class, 'destroy'])->name('ads.destroy');
     });
 });
 

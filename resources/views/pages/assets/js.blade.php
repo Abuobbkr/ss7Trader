@@ -23,10 +23,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> --}}
 
 <script>
-    console.log("Script file (pages/assets/js.blade.php) loaded.");
 
     $(document).ready(function () {
-        console.log("jQuery document ready function executed.");
 
         // Initialize DataTable
         var table = $('#assets-table').DataTable({

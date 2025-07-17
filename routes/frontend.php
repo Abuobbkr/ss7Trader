@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\frontend\AuthController;
+use App\Http\Controllers\frontend\FreeSignalController;
 use App\Http\Controllers\frontend\SignalController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('subscriber.auth')->group(function () {
     Route::get('subscriber/signals', [SignalController::class, 'index'])->name('frontend.signal.index');
 });
+Route::get('subscriber/free/signals', [FreeSignalController::class, 'index'])->name('frontend.free.signal.index');
 Route::post('subscriber/login', [AuthController::class, 'login'])->name('subscriber.login.post');
 
 
