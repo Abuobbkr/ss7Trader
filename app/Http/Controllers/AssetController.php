@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon; // Import Carbon for date formatting
 use Illuminate\Support\Facades\Storage; // Required for file storage operations
 use Illuminate\Support\Str; // Required for generating unique filenames
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class AssetController extends Controller
 {
@@ -68,7 +69,7 @@ class AssetController extends Controller
                         ? $asset->created_at->format('Y-m-d')
                         : 'N/A';
                 })
-               
+
                 ->addColumn('action', function ($asset) {
                     // Action buttons for edit and delete
                     $editBtn = '<button class="btn btn-sm btn-primary edit-asset" data-id="' . $asset->id . '" data-bs-toggle="modal" data-bs-target="#assetModal">Edit</button>';
@@ -96,71 +97,138 @@ class AssetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
+    // public function store(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'pair_name' => 'required|string|max:255',
+    //         'market_type' => 'required|string|in:forex,crypto,stock',
+    //         'asset_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // max: 2048 KB = 2 MB
+    //     ]);
+
+    //     // If validation fails, return JSON response with errors
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Validation failed',
+    //             'errors' => $validator->errors()
+    //         ], 422); // HTTP 422 Unprocessable Entity
+    //     }
+
+    //     // Get the validated data
+    //     $validatedData = $validator->validated();
+
+    //     $imagePathForDb = null; // Initialize image path variable
+    //     $storedFilePath = null; // To keep track of the internal storage path for cleanup
+
+    //     // 2. Handle the image upload if a file is present
+    //     if ($request->hasFile('asset_image')) {
+    //         $file = $request->file('asset_image');
+
+    //         $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+
+    //         $storedFilePath = $file->storeAs('assets_images', $fileName, 'public');
+
+
+    //         $imagePathForDb = Storage::disk('public')->url($storedFilePath);
+    //     }
+
+    //     // 3. Prepare data for database insertion
+    //     // Remove the 'asset_image' (UploadedFile object) from validatedData
+    //     // and add the 'image' (public URL) which corresponds to your database column.
+    //     unset($validatedData['asset_image']); // Remove the file object
+    //     $validatedData['image'] = $imagePathForDb; // Assign the public URL to your 'image' column
+
+
+
+    //     try {
+    //         // 4. Create the Asset record in the database
+    //         $asset = Asset::create($validatedData);
+
+    //         // Return success response with the created asset data and image URL
+    //         return response()->json([
+    //             'success' => true,
+    //             'message' => 'Asset created successfully',
+    //             'data' => $asset,
+    //             'image_url' => $imagePathForDb // Return the public URL for immediate use if needed
+    //         ], 201); // HTTP 201 Created
+    //     } catch (\Exception $e) {
+    //         // 5. Error handling: If database insertion fails, clean up the uploaded file
+    //         if ($storedFilePath && Storage::disk('public')->exists($storedFilePath)) {
+    //             Storage::disk('public')->delete($storedFilePath);
+    //         }
+
+    //         // Return error response
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Error creating asset: ' . $e->getMessage()
+    //         ], 500); // HTTP 500 Internal Server Error
+    //     }
+    // }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'pair_name' => 'required|string|max:255',
             'market_type' => 'required|string|in:forex,crypto,stock',
-            'asset_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // max: 2048 KB = 2 MB
+            'asset_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        // If validation fails, return JSON response with errors
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
                 'message' => 'Validation failed',
                 'errors' => $validator->errors()
-            ], 422); // HTTP 422 Unprocessable Entity
+            ], 422);
         }
 
-        // Get the validated data
         $validatedData = $validator->validated();
 
-        $imagePathForDb = null; // Initialize image path variable
-        $storedFilePath = null; // To keep track of the internal storage path for cleanup
+        $imagePathForDb = null;
 
-        // 2. Handle the image upload if a file is present
+        // Save image directly into public/storage/assets_images
         if ($request->hasFile('asset_image')) {
             $file = $request->file('asset_image');
-
             $fileName = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
 
-            $storedFilePath = $file->storeAs('assets_images', $fileName, 'public');
+            $destinationPath = public_path('storage/assets_images');
 
+            // Create the directory if it doesn't exist
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true);
+            }
 
-            $imagePathForDb = Storage::disk('public')->url($storedFilePath);
+            // Move file to public/storage/assets_images
+            $file->move($destinationPath, $fileName);
+
+            // URL for DB or frontend access
+            $imagePathForDb = asset('storage/assets_images/' . $fileName);
         }
 
-        // 3. Prepare data for database insertion
-        // Remove the 'asset_image' (UploadedFile object) from validatedData
-        // and add the 'image' (public URL) which corresponds to your database column.
-        unset($validatedData['asset_image']); // Remove the file object
-        $validatedData['image'] = $imagePathForDb; // Assign the public URL to your 'image' column
-
-
+        unset($validatedData['asset_image']);
+        $validatedData['image'] = $imagePathForDb;
 
         try {
-            // 4. Create the Asset record in the database
             $asset = Asset::create($validatedData);
 
-            // Return success response with the created asset data and image URL
             return response()->json([
                 'success' => true,
                 'message' => 'Asset created successfully',
                 'data' => $asset,
-                'image_url' => $imagePathForDb // Return the public URL for immediate use if needed
-            ], 201); // HTTP 201 Created
+                'image_url' => $imagePathForDb
+            ], 201);
         } catch (\Exception $e) {
-            // 5. Error handling: If database insertion fails, clean up the uploaded file
-            if ($storedFilePath && Storage::disk('public')->exists($storedFilePath)) {
-                Storage::disk('public')->delete($storedFilePath);
+            // Optionally, delete image on DB error
+            if ($imagePathForDb) {
+                $fullPath = public_path('storage/assets_images/' . $fileName);
+                if (File::exists($fullPath)) {
+                    File::delete($fullPath);
+                }
             }
 
-            // Return error response
             return response()->json([
                 'success' => false,
                 'message' => 'Error creating asset: ' . $e->getMessage()
-            ], 500); // HTTP 500 Internal Server Error
+            ], 500);
         }
     }
 
