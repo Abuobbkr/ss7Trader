@@ -65,12 +65,12 @@
                     </a>
                 </li>
                 <!-- Ads -->
-                 <li class="slide">
+                 <!-- <li class="slide">
                     <a href="{{ route('ads.index') }}" class="side-menu__item">
                         <i class="bx bx-user-check side-menu__icon"></i>
                         <span class="side-menu__label">Advertisement</span>
                     </a>
-                </li>
+                </li> -->
                 
 
             </ul>
