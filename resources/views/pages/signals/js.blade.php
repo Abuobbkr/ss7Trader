@@ -244,7 +244,7 @@
 
             $.get(`/signals/${signalId}/edit`, function (response) {
                 // Populate form fields
-                $('[name="pair_name"]').val(response.pair_name);
+                $('[name="asset_id"]').val(response.asset_id);
                 $('[name="market_type"]').val(response.market_type);
                 $('[name="entry_price"]').val(response.entry_price);
                 $('[name="stop_loss"]').val(response.stop_loss);
@@ -280,7 +280,7 @@
         console.log('Initializing form validation');
         $('#signal-form').validate({
             rules: {
-                pair_name: {
+                asset_id: {
                     required: true
                 },
                 signal_type: {
@@ -306,7 +306,7 @@
                 }
             },
             messages: {
-                pair_name: {
+                asset_id: {
                     required: "Please select a currency pair"
                 },
                 signal_type: {
@@ -379,7 +379,7 @@
 
                 // Prepare form data
                 const formData = {
-                    pair_name: $('[name="pair_name"]').val(),
+                    asset_id: $('[name="asset_id"]').val(),
                     signal_type: $('[name="signal_type"]').val(),
                     market_type: $('[name="market_type"]').val(),
                     entry_price: $('[name="entry_price"]').val(),

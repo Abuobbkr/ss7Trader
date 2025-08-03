@@ -3,46 +3,161 @@
 @section('title', 'signal')
 
 @section('frontend-content')
+
+
+
     <main>
-        <div class="container">
-            <div class="row mt-5">
-                <div class="col-12">
-                    <div class="table-responsive">
-                        <div class="mb-3">
-                            <label for="signalTypeFilter" class="form-label">Filter by Signal Type:</label>
-                            <select id="signalTypeFilter" class="form-select" onchange="filterSignals()">
-                                <option value="">All</option>
-                                <option value="forex">Forex</option>
-                                <option value="crypto">Crypto</option>
-                                <option value="stock">Stock</option>
-                            </select>
+        <div class="fluid-container">
+            <div class="row p-5 mt-5">
+                <div class="col-12 col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center mb-3">
+                                <label for="signalTypeFilter" class="form-label mb-0 me-2 text-muted fw-bold">Filter by
+                                    Signal Type:</label>
+                                <select id="signalTypeFilter" class="form-select w-auto" onchange="filterSignals()">
+                                    <option value="">All</option>
+                                    <option value="forex">Forex</option>
+                                    <option value="crypto">Crypto</option>
+                                    <option value="stock">Stock</option>
+                                </select>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">Pair</th>
+                                            <th scope="col">Order Type</th>
+                                            <th scope="col">Entry Price</th>
+                                            <th scope="col">Stop Loss</th>
+                                            <th scope="col">Take Profit</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @include('frontend.partials.signal-rows', ['subscriber_type' => 'premium'])
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-4 d-flex justify-content-end">
+                                {{ $signals->links('pagination::bootstrap-5') }}
+                            </div>
                         </div>
-                        <table class="table m-0">
-                            <!-- Table Header -->
-                            <thead class="bg-light">
-                                <tr>
-                                    <th class="align-middle py-4">Time Closed</th>
-                                    <th class="align-middle  py-4">Pair</th>
-                                    <th class="align-middle d-none d-md-table-cell py-4">Action TP</th>
-                                    <th class="align-middle py-4">SL</th>
-                                    <th class="align-middle py-4">Result</th>
-                                    <th class="align-middle py-4">Entry Price</th>
-                                </tr>
-                            </thead>
+                    </div>
+                </div>
 
-                            <!-- Table Body -->
-                            <tbody>
-                                @include('frontend.partials.signal-rows')
-                            </tbody>
-
-                        </table>
-                        <div class="mt-4 text-end">
-                            {{ $signals->links() }}
+                <div class="col-12 col-md-6 col-lg-4 mx-auto p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-center border-0 bg-white">
+                            <h5 class="fw-bold my-2">🏆 Top 4 Brokers</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr class="d-none d-md-table-row">
+                                            <th scope="col" class="pb-2"></th>
+                                            <th scope="col" class="pb-2">Broker</th>
+                                            <th scope="col" class="pb-2 text-center">Deposit</th>
+                                            <th scope="col" class="pb-2">Sign Up</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">🥇</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2020/11/Avatrade.png"
+                                                    alt="Avatrade logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">Avatrade</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$100</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/avatrade" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">🥈</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2025/05/PrimeXBT-Logo.png"
+                                                    alt="PrimeXBT logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">PrimeXBT</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$10</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/primexbt" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">3</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2025/04/FXTM-logo.png"
+                                                    alt="FXTM logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">FXTM</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$200</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/fxtm" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">4</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2020/11/Exness-logo.png"
+                                                    alt="Exness logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">Exness</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$10</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/exness" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
     </main>

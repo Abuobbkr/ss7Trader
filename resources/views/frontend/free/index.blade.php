@@ -3,494 +3,156 @@
 @section('title', 'signal')
 
 @section('frontend-content')
-    <style>
-        /* General container styling */
-        .modal-body {
-            padding-top: 0;
-        }
 
-        .fxlea-fxl-pop-up {
-            font-family: Arial, sans-serif;
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            max-width: 500px;
-            margin: 20px auto;
-        }
-
-        /* Header styling */
-        .text-black {
-            color: #000;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .border-b-gray1-3px {
-            border-bottom: 3px solid #f0f0f0;
-        }
-
-        .font-24 {
-            font-size: 24px;
-        }
-
-        .font-bold {
-            font-weight: bold;
-        }
-
-        .text-center.border-b-gray1-3px {
-            padding-bottom: 10px;
-        }
-
-        /* Table container margin */
-        .m-b-10 {
-            margin-bottom: 10px;
-        }
-
-        .m-t-20 {
-            margin-top: 20px;
-        }
-
-        /* Table styling */
-        .tablepress {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0;
-            padding: 0;
-        }
-
-        .tablepress thead th {
-            background-color: #f5f5f5;
-            padding: 12px 15px;
-            text-align: left;
-            font-weight: bold;
-            color: #333;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .tablepress tbody tr {
-            border-bottom: 1px solid #eee;
-        }
-
-        .tablepress tbody tr:last-child {
-            border-bottom: none;
-        }
-
-        .tablepress tbody td {
-            padding: 12px 15px;
-            vertical-align: middle;
-            color: #555;
-        }
-
-        .tablepress .column-1 {
-            text-align: center;
-            width: 40px;
-            /* Adjust as needed for medal icons */
-        }
-
-        .tablepress .column-2 {
-            text-align: left;
-            width: 120px;
-            /* Adjust as needed for broker logos */
-        }
-
-        .tablepress .column-3 {
-            text-align: left;
-            width: 120px;
-            /* Adjust as needed for deposit info */
-        }
-
-        .tablepress .column-4 {
-            text-align: center;
-        }
-
-        /* Broker logo styling */
-        .tablepress .column-2 img {
-            max-width: 100px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Deposit container styling */
-        .deposit-container {
-            text-align: left;
-        }
-
-        .deposit-label {
-            font-size: 12px;
-            color: #777;
-            margin-bottom: 2px;
-        }
-
-        .deposit-amount {
-            font-size: 16px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Sign up button styling */
-        .mob-cta-btn {
-            width: 120px;
-            /* Fixed width for consistency */
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            /* Center the button */
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .mob-cta-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* Row striping and hover effects */
-        .row-striping tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .row-hover tbody tr:hover {
-            background-color: #f0f8ff;
-            /* Light blue on hover */
-        }
-
-        /* Specific medal icon colors (if applicable, though they are images here) */
-        .column-1 span {
-            font-size: 1.2em;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .fxlea-fxl-pop-up {
-                margin: 10px;
-                /* Smaller margin on smaller screens */
-            }
-
-            .tablepress thead th,
-            .tablepress tbody td {
-                padding: 8px 10px;
-                /* Reduce padding for smaller screens */
-                font-size: 14px;
-                /* Smaller font size for table content */
-            }
-
-            .tablepress .column-1 {
-                width: 30px;
-                /* Adjust medal column width */
-            }
-
-            .tablepress .column-2 {
-                width: 90px;
-                /* Adjust broker logo column width */
-            }
-
-            .tablepress .column-2 img {
-                max-width: 80px;
-                /* Smaller logo size */
-            }
-
-            .tablepress .column-3 {
-                width: 100px;
-                /* Adjust deposit column width */
-            }
-
-            .deposit-label {
-                font-size: 10px;
-            }
-
-            .deposit-amount {
-                font-size: 14px;
-            }
-
-            .mob-cta-btn {
-                width: 100px;
-                /* Smaller button size */
-            }
-
-            .font-24 {
-                font-size: 20px;
-                /* Smaller heading font size */
-            }
-        }
-
-        @media (max-width: 576px) {
-            .fxlea-fxl-pop-up {
-                border-radius: 0;
-                /* Remove border-radius for full width on very small screens */
-                margin: 0;
-                /* No margin on very small screens */
-                max-width: 100%;
-                /* Take full width */
-            }
-
-            .tablepress thead {
-                display: none;
-                /* Hide table header on very small screens */
-            }
-
-            .tablepress tbody,
-            .tablepress tr,
-            .tablepress td {
-                display: block;
-                /* Make table elements block-level */
-                width: 100%;
-                /* Each cell takes full width */
-            }
-
-            .tablepress tr {
-                margin-bottom: 15px;
-                /* Add space between rows */
-                border: 1px solid #ddd;
-                /* Add a border to individual rows */
-                border-radius: 5px;
-            }
-
-            .tablepress td {
-                text-align: right !important;
-                /* Align content to the right */
-                padding-left: 50%;
-                /* Make space for pseudo-elements */
-                position: relative;
-            }
-
-            .tablepress td::before {
-                content: attr(data-label);
-                /* Use data-label for content */
-                position: absolute;
-                left: 10px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                text-align: left;
-                font-weight: bold;
-                color: #333;
-            }
-
-            /* Assign data-label attributes to table cells for mobile view */
-            .tablepress .row-2 .column-1::before {
-                content: "Rank:";
-            }
-
-            .tablepress .row-2 .column-2::before {
-                content: "Broker:";
-            }
-
-            .tablepress .row-2 .column-3::before {
-                content: "Deposit:";
-            }
-
-            .tablepress .row-2 .column-4::before {
-                content: "Sign Up:";
-            }
-
-            .tablepress .row-3 .column-1::before {
-                content: "Rank:";
-            }
-
-            .tablepress .row-3 .column-2::before {
-                content: "Broker:";
-            }
-
-            .tablepress .row-3 .column-3::before {
-                content: "Deposit:";
-            }
-
-            .tablepress .row-3 .column-4::before {
-                content: "Sign Up:";
-            }
-
-            .tablepress .row-4 .column-1::before {
-                content: "Rank:";
-            }
-
-            .tablepress .row-4 .column-2::before {
-                content: "Broker:";
-            }
-
-            .tablepress .row-4 .column-3::before {
-                content: "Deposit:";
-            }
-
-            .tablepress .row-4 .column-4::before {
-                content: "Sign Up:";
-            }
-
-            .tablepress .row-5 .column-1::before {
-                content: "Rank:";
-            }
-
-            .tablepress .row-5 .column-2::before {
-                content: "Broker:";
-            }
-
-            .tablepress .row-5 .column-3::before {
-                content: "Deposit:";
-            }
-
-            .tablepress .row-5 .column-4::before {
-                content: "Sign Up:";
-            }
-
-            .tablepress .column-2 img,
-            .tablepress .column-4 .mob-cta-btn {
-                margin: 0;
-                /* Remove auto margin to align better with right-aligned text */
-                display: inline-block;
-                /* Allow inline display with the label */
-                vertical-align: middle;
-            }
-        }
-    </style>
 
 
     <main>
         <div class="fluid-container">
             <div class="row p-5 mt-5">
-                <div class="col-8">
-                    <div class="table-responsive">
-                        <div class="mb-3">
-                            <label for="signalTypeFilter" class="form-label">Filter by Signal Type:</label>
-                            <select id="signalTypeFilter" class="form-select" onchange="filterSignals()">
-                                <option value="">All</option>
-                                <option value="forex">Forex</option>
-                                <option value="crypto">Crypto</option>
-                            </select>
-                        </div>
-                        <table class="table m-0">
-                            <!-- Table Header -->
-                            <thead class="bg-light">
-                                <tr>
-                                    <th class="align-middle  ">Pair</th>
-                                    <th class="align-middle  ">Order Type</th>
-                                    <th class="align-middle ">Entry Price</th>
-                                    <th class="align-middle ">Stop Loss</th>
-                                    <th class="align-middle ">Take Profit</th>
-                                    <th class="align-middle "></th>
-                                </tr>
-                            </thead>
-
-                            <!-- Table Body -->
-                            <tbody>
-                                @include('frontend.partials.signal-rows')
-                            </tbody>
-
-                        </table>
-                        <div class="mt-4 text-end">
-                            {{ $signals->links() }}
+                <div class="col-12 col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center mb-3">
+                                <label for="signalTypeFilter" class="form-label mb-0 me-2 text-muted fw-bold">Filter by
+                                    Signal Type:</label>
+                                <select id="signalTypeFilter" class="form-select w-auto" onchange="filterSignals()">
+                                    <option value="">All</option>
+                                    <option value="forex">Forex</option>
+                                    <option value="crypto">Crypto</option>
+                                    <option value="stock">Stock</option>
+                                </select>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col">Pair</th>
+                                            <th scope="col">Order Type</th>
+                                            <th scope="col">Entry Price</th>
+                                            <th scope="col">Take Profit</th>
+                                            <th scope="col">Stop Loss</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @include('frontend.partials.signal-rows', ['subscriber_type' => 'free']) 
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-4 d-flex justify-content-end">
+                                {{ $signals->links('pagination::bootstrap-5') }}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <div class="card p-3">
-                        <div class="fxlea-f2a100c7e747e0a072f3768bc61b2b61 fxlea-fxl-pop-up"
-                            id="fxlea-f2a100c7e747e0a072f3768bc61b2b61">
-                            <div class="fxlea-fxl-pop-up" id="fxlea-2890559669">
-                                <div data-fxlea-trackid="365124" data-fxlea-trackbid="1" class="fxlea-target"
-                                    id="fxlea-2955862937">
-                                    <div class="text-black text-center border-b-gray1-3px" style="padding-bottom: 10px;">
-                                        <div class="font-24 font-bold">🏆 Top 4 Brokers</div>
-                                    </div>
 
-                                    <div class="m-b-10 m-t-20">
-                                        <table id="tablepress-135" class="tablepress tablepress-id-135">
-                                            <thead>
-                                                <tr class="row-1">
-                                                    <td class="column-1"></td>
-                                                    <th class="column-2">Broker</th>
-                                                    <th class="column-3">Deposit</th>
-                                                    <th class="column-4">Sign Up</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="row-striping row-hover">
-                                                <tr class="row-2">
-                                                    <td class="column-1" data-label="Rank:">🥇</td>
-                                                    <td class="column-2" data-label="Broker:">
-                                                        <img decoding="async"
-                                                            src="https://forexsuggest.com/wp-content/uploads/2020/11/Avatrade.png"
-                                                            width="100px" />
-                                                    </td>
-                                                    <td class="column-3" data-label="Deposit:">
-                                                        <div class="deposit-container">
-                                                            <div class="deposit-label">Minimum Deposit</div>
-                                                            <div class="deposit-amount">$100</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="column-4" data-label="Sign Up:">
-                                                        <a href="https://www.fxleaders.com/avatrade" target="_blank"
-                                                            rel="noopener"><img decoding="async"
-                                                                src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
-                                                                alt="Visit Broker" class="mob-cta-btn" /></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-3">
-                                                    <td class="column-1" data-label="Rank:">🥈</td>
-                                                    <td class="column-2" data-label="Broker:">
-                                                        <img decoding="async"
-                                                            src="https://forexsuggest.com/wp-content/uploads/2025/05/PrimeXBT-Logo.png"
-                                                            width="100px" />
-                                                    </td>
-                                                    <td class="column-3" data-label="Deposit:">
-                                                        <div class="deposit-container">
-                                                            <div class="deposit-label">Minimum Deposit</div>
-                                                            <div class="deposit-amount">$10</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="column-4" data-label="Sign Up:">
-                                                        <a href="https://www.fxleaders.com/primexbt" target="_blank"
-                                                            rel="noopener"><img decoding="async"
-                                                                src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
-                                                                alt="Visit Broker" class="mob-cta-btn" /></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-4">
-                                                    <td class="column-1" data-label="Rank:">3</td>
-                                                    <td class="column-2" data-label="Broker:">
-                                                        <img decoding="async"
-                                                            src="https://forexsuggest.com/wp-content/uploads/2025/04/FXTM-logo.png"
-                                                            width="100px" />
-                                                    </td>
-                                                    <td class="column-3" data-label="Deposit:">
-                                                        <div class="deposit-container">
-                                                            <div class="deposit-label">Minimum Deposit</div>
-                                                            <div class="deposit-amount">$200</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="column-4" data-label="Sign Up:">
-                                                        <a href="https://www.fxleaders.com/fxtm" target="_blank"
-                                                            rel="noopener"><img decoding="async"
-                                                                src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
-                                                                alt="Visit Broker" class="mob-cta-btn" /></a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="row-5">
-                                                    <td class="column-1" data-label="Rank:">4</td>
-                                                    <td class="column-2" data-label="Broker:">
-                                                        <img decoding="async"
-                                                            src="https://forexsuggest.com/wp-content/uploads/2020/11/Exness-logo.png"
-                                                            width="100px" />
-                                                    </td>
-                                                    <td class="column-3" data-label="Deposit:">
-                                                        <div class="deposit-container">
-                                                            <div class="deposit-label">Minimum Deposit</div>
-                                                            <div class="deposit-amount">$10</div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="column-4" data-label="Sign Up:">
-                                                        <a href="https://www.fxleaders.com/exness" target="_blank"
-                                                            rel="noopener"><img decoding="async"
-                                                                src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
-                                                                alt="Visit Broker" class="mob-cta-btn" /></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                <div class="col-12 col-md-6 col-lg-4 mx-auto p-0">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-center border-0 bg-white">
+                            <h5 class="fw-bold my-2">🏆 Top 4 Brokers</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover align-middle mb-0">
+                                    <thead>
+                                        <tr class="d-none d-md-table-row">
+                                            <th scope="col" class="pb-2"></th>
+                                            <th scope="col" class="pb-2">Broker</th>
+                                            <th scope="col" class="pb-2 text-center">Deposit</th>
+                                            <th scope="col" class="pb-2">Sign Up</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">🥇</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2020/11/Avatrade.png"
+                                                    alt="Avatrade logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">Avatrade</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$100</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/avatrade" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">🥈</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2025/05/PrimeXBT-Logo.png"
+                                                    alt="PrimeXBT logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">PrimeXBT</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$10</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/primexbt" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">3</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2025/04/FXTM-logo.png"
+                                                    alt="FXTM logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">FXTM</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$200</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/fxtm" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr class="border-bottom">
+                                            <td class="d-none d-md-table-cell text-center" data-label="Rank:">4</td>
+                                            <td class="d-flex align-items-center justify-content-start"
+                                                data-label="Broker:">
+                                                <img src="https://forexsuggest.com/wp-content/uploads/2020/11/Exness-logo.png"
+                                                    alt="Exness logo" class="img-fluid me-2" style="max-width: 80px;" />
+                                                <span class="d-md-none fw-bold">Exness</span>
+                                            </td>
+                                            <td class="text-center" data-label="Deposit:">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <div class="text-muted small">Minimum Deposit</div>
+                                                    <div class="fw-bold">$10</div>
+                                                </div>
+                                            </td>
+                                            <td class="text-center" data-label="Sign Up:">
+                                                <a href="https://www.fxleaders.com/exness" target="_blank" rel="noopener">
+                                                    <img src="https://forexsuggest.com/wp-content/uploads/2025/03/Call-to-action-button.jpg"
+                                                        alt="Visit Broker" class="mob-cta-btn img-fluid"
+                                                        style="max-width: 100px;" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

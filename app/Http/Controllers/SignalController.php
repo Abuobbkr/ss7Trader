@@ -24,15 +24,30 @@ class SignalController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $signals = Signal::latest();
+            $signals = Signal::with('asset')->latest()->get(); // Use get() to execute the query
 
             return DataTables::of($signals)
                 ->addIndexColumn()
                 ->addColumn('serial_number', function ($signal) {
                     return $signal->id;
                 })
+
                 ->addColumn('pair_name', function ($signal) {
-                    return $signal->pair_name;
+                    if ($signal->asset) {
+                        $imageUrl = $signal->asset->image;
+                        $pairName = strtoupper($signal->asset->pair_name);
+
+                        return '<div class="d-flex align-items-center">
+                    <img src="' . asset($imageUrl) . '" alt="' . $pairName . ' Image" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                    <span>' . $pairName . '</span>
+                </div>';
+                    }
+
+                    // This block will execute if there is no associated asset.
+                    // It prevents the error and displays a placeholder.
+                    return '<div class="d-flex align-items-center">
+                <span class="text-danger">No Asset Found</span>
+            </div>';
                 })
                 ->addColumn('signal_type', function ($signal) {
                     $badgeClass = $signal->signal_type === 'buy' ? 'bg-success' : 'bg-danger';
@@ -83,7 +98,7 @@ class SignalController extends Controller
                     // return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
                     return $editBtn . ' ' . $deleteBtn;
                 })
-                ->rawColumns(['market_type', 'signal_type', 'status', 'group_type', 'action', 'stop_loss', 'entry_price', 'take_profit'])
+                ->rawColumns(['pair_name','market_type', 'signal_type', 'status', 'group_type', 'action', 'stop_loss', 'entry_price', 'take_profit'])
                 ->make(true);
         }
 
@@ -96,8 +111,9 @@ class SignalController extends Controller
 
     public function store(Request $request)
     {
+        // return ($request->all()); // Debugging line to check request data
         $validated = $request->validate([
-            'pair_name' => 'required|string|max:255',
+            'asset_id' => 'required|exists:assets,id', // Ensure asset_id exists in assets table
             'market_type' => 'required|string|in:forex,crypto,stock',
             'entry_price' => 'required|numeric|min:0.00001',
             'stop_loss' => 'required|numeric|min:0.00001',
@@ -150,7 +166,7 @@ class SignalController extends Controller
     {
         $signal = Signal::findOrFail($id); // Throws 404 if not found
         $validated = $request->validate([
-            'pair_name' => 'required|string|max:255',
+            'asset_id' => 'required|exists:assets,id', // Ensure asset_id exists in assets table
             'market_type' => 'required|string|in:forex,crypto,stock', // Corrected 'stocks' to 'stock' if it was a typo
             'entry_price' => 'required|numeric|min:0.00001',
             'stop_loss' => 'required|numeric|min:0.00001',

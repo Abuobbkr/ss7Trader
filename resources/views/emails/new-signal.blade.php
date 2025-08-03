@@ -3,197 +3,131 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Trading Signal Alert</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Signal Alert!</title>
-    <style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
-        /* Basic resets for email clients */
-        body,
-        table,
-        td,
-        a {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+        body {
+            margin: 0;
+            padding: 0;
+            background: #0b0f1a;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
         }
 
-        table,
-        td {
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
+        .container {
+            max-width: 620px;
+            margin: 0 auto;
+            background: #12192c;
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
         }
 
-        img {
-            -ms-interpolation-mode: bicubic;
-            border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
+        .header {
+            border-bottom: 2px solid #ff69b4;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ff69b4;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .signal-info {
+            background: #1c2436;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #2f3b57;
+        }
+
+        .signal-info p {
+            font-size: 15px;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .signal-info strong {
+            color: #ff69b4;
+            display: inline-block;
+            width: 140px;
+        }
+
+        .footer {
+            border-top: 1px solid #2c344c;
+            margin-top: 40px;
+            padding-top: 25px;
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 4px 0;
+        }
+
+        .footer a {
+            color: #ff69b4;
             text-decoration: none;
         }
 
-        a[x-apple-data-detectors] {
-            color: inherit !important;
-            text-decoration: none !important;
-            font-size: inherit !important;
-            font-family: inherit !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
-        }
-
-        .apple-link a {
-            color: inherit !important;
-            text-decoration: none !important;
-        }
-
-        /* Responsive styles (for clients that support it) */
-        @media screen and (max-width: 600px) {
-            .full-width-image img {
-                width: 100% !important;
-                height: auto !important;
+        @media screen and (max-width: 620px) {
+            .container {
+                padding: 30px 20px;
             }
 
-            .content-padding {
-                padding: 20px !important;
+            .header h1 {
+                font-size: 22px;
             }
 
-            .button-wrapper {
-                padding: 10px 0 !important;
-            }
-
-            .button-cell {
-                padding: 10px 20px !important;
-            }
-
-            .header h2 {
-                font-size: 1.8em !important;
-            }
-
-            .content p {
-                font-size: 1em !important;
-            }
-
-            .credentials {
-                padding: 15px !important;
+            .signal-info strong {
+                width: 120px;
             }
         }
     </style>
 </head>
 
-<body style="margin: 0; padding: 0; background-color: #e0f2f7; font-family: 'Poppins', Arial, sans-serif;">
+<body>
 
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #e0f2f7;">
-        <tr>
-            <td align="center" style="padding: 40px 20px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                    style="max-width: 650px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <tr>
-                        <td align="center" style="padding: 35px 45px; border-radius: 12px;">
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td align="center"
-                                        style="border-bottom: 2px solid #a7d9f7; padding-bottom: 15px; margin-bottom: 25px;">
-                                        <h2
-                                            style="font-family: 'Poppins', Arial, sans-serif; color: #2980b9; font-size: 2.2em; margin: 0; font-weight: 700; letter-spacing: -0.5px;">
-                                            New Signal Alert!</h2>
-                                    </td>
-                                </tr>
-                            </table>
+    <div class="container">
+        <div class="header">
+            <h1>New Signal Alert</h1>
+        </div>
 
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td
-                                        style="padding-top: 25px; text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0 0 18px;">A new trading signal has been posted:</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding: 25px 0;">
-                                        <table border="0" cellpadding="0" cellspacing="0"
-                                            style="width: 100%; max-width: 400px; background-color: #ecf8ff; padding: 20px 25px; border: 1px solid #b3e5fc; border-radius: 8px; box-shadow: inset 0 1px 5px rgba(0,0,0,0.05);">
-                                            <tr>
-                                                <td
-                                                    style="font-family: 'Poppins', Arial, sans-serif; font-size: 1em; line-height: 1.6; color: #34495e; text-align: left;">
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Currency Pair:</span></strong>
-                                                        {{ $signal->pair_name }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Signal Type:</span></strong>
-                                                        {{ ucfirst($signal->signal_type) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Market Type:</span></strong>
-                                                        {{ ucfirst($signal->market_type) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Entry Price:</span></strong>
-                                                        {{ number_format($signal->entry_price, 5) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span style="color: #2980b9;">Stop
-                                                                Loss:</span></strong>
-                                                        {{ number_format($signal->stop_loss, 5) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span style="color: #2980b9;">Take
-                                                                Profit:</span></strong>
-                                                        {{ number_format($signal->take_profit, 5) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Group Type:</span></strong>
-                                                        {{ ucfirst($signal->group_type) }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Status:</span></strong>
-                                                        {{ $signal->is_open ? 'Active' : 'Closed' }}</p>
+        <div class="signal-info">
+            <p><strong>Currency Pair:</strong> {{ $signal->pair_name }}</p>
+            <p><strong>Signal Type:</strong> {{ ucfirst($signal->signal_type) }}</p>
+            <p><strong>Market Type:</strong> {{ ucfirst($signal->market_type) }}</p>
+            <p><strong>Entry Price:</strong> {{ number_format($signal->entry_price, 5) }}</p>
+            <p><strong>Stop Loss:</strong> {{ number_format($signal->stop_loss, 5) }}</p>
+            <p><strong>Take Profit:</strong> {{ number_format($signal->take_profit, 5) }}</p>
+            <p><strong>Status:</strong> {{ $signal->is_open ? 'Active' : 'Closed' }}</p>
+        </div>
 
-                                                    @if($signal->entry_price_premium || $signal->stop_loss_premium || $signal->take_profit_premium)
-                                                        <p style="margin: 15px 0 5px; font-weight: 600; color: #2980b9;">
-                                                            This signal includes premium features for:</p>
-                                                        <ul
-                                                            style="list-style-type: disc; margin: 0; padding-left: 20px; color: #34495e;">
-                                                            @if($signal->entry_price_premium)
-                                                                <li style="margin-bottom: 5px;">Entry Price</li>
-                                                            @endif
-                                                            @if($signal->stop_loss_premium)
-                                                                <li style="margin-bottom: 5px;">Stop Loss</li>
-                                                            @endif
-                                                            @if($signal->take_profit_premium)
-                                                                <li>Take Profit</li>
-                                                            @endif
-                                                        </ul>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0;">Stay tuned for more updates and trading opportunities!</p>
-                                    </td>
-                                </tr>
-                                <tr>
+        <div style="margin-top: 30px; color: #ccc; font-size: 15px; text-align: center;">
+            Stay sharp. More signals are coming.
+            Our expert analysts are always on the charts.
+        </div>
 
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0;">If you have any questions or need assistance, our
-                                            dedicated support team is here to help. Just reach out!</p>
-                                    </td>
-                                </tr>
-                            </table>
+        <div class="footer">
+            <p><strong>SS7Trader Academy</strong></p>
+            <p>Email: <a href="mailto:support@ss7trader.com">support@ss7trader.com</a></p>
+            <p>Website: <a href="https://signal.ss7trader.com">signal.ss7trader.com</a></p>
+            <p>Telegram: <a href="https://t.me/SSsevenTrader">@SSsevenTrader</a></p>
+            <p>Social: @ss7traderacademy on YouTube, IG, FB, X</p>
+            <p style="margin-top: 15px; color: #666;">Risk Warning: Trading financial instruments involves high risk and
+                may not be suitable for all investors. Always trade responsibly.</p>
+            <p>&copy; {{ date('Y') }} SS7Trader Academy. All Rights Reserved.</p>
+        </div>
+    </div>
 
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td align="center"
-                                        style="font-family: 'Poppins', Arial, sans-serif; font-size: 0.9em; color: #95a5a6; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eceff1;">
-                                        Thanks,<br>
-                                        {{ config('app.name') }}<br>
-                                        &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
 </body>
 
 </html>

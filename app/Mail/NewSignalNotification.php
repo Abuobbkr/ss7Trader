@@ -10,9 +10,11 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NewSignalNotification extends Mailable implements ShouldQueue // Added ShouldQueue
+// class NewSignalNotification extends Mailable implements ShouldQueue // Added ShouldQueue
+class NewSignalNotification extends Mailable // Added ShouldQueue
 {
-    use Queueable, SerializesModels;
+    // use Queueable, SerializesModels;
+    use  SerializesModels;
 
     /**
      * The signal instance.

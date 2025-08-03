@@ -50,10 +50,10 @@
                                         <div class="col-md-4">
                                             <label class="form-label">Currency Pair <span
                                                     class="text-danger">*</span></label>
-                                            <select class="form-select" name="pair_name">
+                                            <select class="form-select" name="asset_id">
                                                 <option value="">Select Currency Pair</option>
                                                 @foreach($assets as $asset)
-                                                    <option value="{{ $asset->pair_name }}">{{ $asset->pair_name }}</option>
+                                                    <option value="{{ $asset->id }}">{{ $asset->pair_name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

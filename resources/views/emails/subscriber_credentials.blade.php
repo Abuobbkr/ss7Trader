@@ -2,177 +2,206 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Our Platform!</title>
-    <style type="text/css">
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to SS7Trader Academy!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-        /* Basic resets for email clients */
-        body,
-        table,
-        td,
-        a {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-        }
+    body,
+    table,
+    td,
+    a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
 
-        table,
-        td {
-            mso-table-lspace: 0pt;
-            mso-table-rspace: 0pt;
-        }
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
 
-        img {
-            -ms-interpolation-mode: bicubic;
-            border: 0;
-            height: auto;
-            line-height: 100%;
-            outline: none;
-            text-decoration: none;
-        }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
 
-        a[x-apple-data-detectors] {
-            color: inherit !important;
-            text-decoration: none !important;
-            font-size: inherit !important;
-            font-family: inherit !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
-        }
+    a[x-apple-data-detectors] {
+      color: inherit !important;
+      text-decoration: none !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      line-height: inherit !important;
+    }
 
-        .apple-link a {
-            color: inherit !important;
-            text-decoration: none !important;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0c1126;
+      font-family: 'Poppins', Arial, sans-serif;
+      color: #e1e1e1;
+    }
 
-        /* Responsive styles (for clients that support it) */
-        @media screen and (max-width: 600px) {
-            .full-width-image img {
-                width: 100% !important;
-                height: auto !important;
-            }
+    .container {
+      max-width: 650px;
+      margin: 40px auto;
+      background-color: #121a40;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(255, 20, 147, 0.6);
+      padding: 45px 40px;
+    }
 
-            .content-padding {
-                padding: 20px !important;
-            }
+    .header {
+      border-bottom: 3px solid #ff14a1;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
 
-            .button-wrapper {
-                padding: 10px 0 !important;
-            }
+    .header h2 {
+      color: #ff14a1;
+      font-size: 2.4em;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
 
-            .button-cell {
-                padding: 10px 20px !important;
-            }
+    .content p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #b0b6cc;
+      margin: 0 0 18px 0;
+      text-align: center;
+    }
 
-            .header h2 {
-                font-size: 1.8em !important;
-            }
+    .credentials {
+      background-color: #1e2a6f;
+      border: 1px solid #ff14a1;
+      border-radius: 12px;
+      padding: 25px 30px;
+      max-width: 420px;
+      margin: 25px auto;
+      color: #fff;
+      font-size: 1.05em;
+      box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);
+    }
 
-            .content p {
-                font-size: 1em !important;
-            }
+    .credentials p {
+      margin: 12px 0;
+      text-align: left;
+    }
 
-            .credentials {
-                padding: 15px !important;
-            }
-        }
-    </style>
+    .credentials strong {
+      color: #ff14a1;
+      display: inline-block;
+      width: 110px;
+    }
+
+    .btn-wrapper {
+      text-align: center;
+      margin: 35px 0 30px 0;
+    }
+
+    .btn-login {
+      background: linear-gradient(90deg, #ff14a1 0%, #ff5da3 100%);
+      color: #fff !important;
+      padding: 16px 48px;
+      font-size: 1.15em;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px rgba(255, 20, 147, 0.6);
+      transition: background 0.3s ease;
+    }
+
+    .btn-login:hover {
+      background: linear-gradient(90deg, #ff5da3 0%, #ff14a1 100%);
+      box-shadow: 0 6px 25px rgba(255, 20, 147, 0.8);
+    }
+
+    .footer-text {
+      text-align: center;
+      font-size: 0.9em;
+      color: #707a9c;
+      margin-top: 40px;
+      border-top: 1px solid #28315b;
+      padding-top: 20px;
+      line-height: 1.5;
+    }
+
+    .footer-text a {
+      color: #ff14a1;
+      text-decoration: none;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        margin: 20px 15px;
+        padding: 30px 20px;
+      }
+
+      .header h2 {
+        font-size: 1.8em;
+      }
+
+      .credentials {
+        padding: 18px 20px;
+      }
+
+      .btn-login {
+        padding: 14px 36px;
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 
-<body style="margin: 0; padding: 0; background-color: #e0f2f7; font-family: 'Poppins', Arial, sans-serif;">
+<body>
+  <div class="container" role="main">
+    <div class="header">
+      <h2>Welcome, {{ $subscriber->username }}!</h2>
+    </div>
 
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #e0f2f7;">
-        <tr>
-            <td align="center" style="padding: 40px 20px;">
-                <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                    style="max-width: 650px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                    <tr>
-                        <td align="center" style="padding: 35px 45px; border-radius: 12px;">
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td align="center"
-                                        style="border-bottom: 2px solid #a7d9f7; padding-bottom: 15px; margin-bottom: 25px;">
-                                        <h2
-                                            style="font-family: 'Poppins', Arial, sans-serif; color: #2980b9; font-size: 2.2em; margin: 0; font-weight: 700; letter-spacing: -0.5px;">
-                                            Welcome, {{ $subscriber->username }}!</h2>
-                                    </td>
-                                </tr>
-                            </table>
+    <div class="content">
+      <p>Thank you for joining the SS7Trader Academy family! Your journey to mastering elite trading signals and
+        strategies starts here.</p>
+    </div>
 
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td
-                                        style="padding-top: 25px; text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0 0 18px;">Thank you for joining our community! We're thrilled
-                                            to have you on board. Your journey to explore all our exciting features
-                                            begins now.</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding: 25px 0;">
-                                        <table border="0" cellpadding="0" cellspacing="0"
-                                            style="width: 100%; max-width: 400px; background-color: #ecf8ff; padding: 20px 25px; border: 1px solid #b3e5fc; border-radius: 8px; box-shadow: inset 0 1px 5px rgba(0,0,0,0.05);">
-                                            <tr>
-                                                <td
-                                                    style="font-family: 'Poppins', Arial, sans-serif; font-size: 1em; line-height: 1.6; color: #34495e; text-align: left;">
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Email:</span></strong>
-                                                        {{ $subscriber->email }}</p>
-                                                    <p style="margin: 8px 0;"><strong><span
-                                                                style="color: #2980b9;">Password:</span></strong>
-                                                        {{ $plainPassword }}</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0 0 18px;">For your security, we recommend changing your
-                                            password after your first login. Ready to dive in?</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" style="padding: 30px 0;">
-                                        <table border="0" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td align="center" bgcolor="#3498db"
-                                                    style="border-radius: 50px; padding: 0;">
-                                                    <a href="YOUR_LOGIN_PAGE_URL_HERE" target="_blank"
-                                                        style="font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; font-weight: 600; color: #ffffff; text-decoration: none; padding: 14px 30px; display: inline-block; border-radius: 50px; background-color: #3498db;">
-                                                        Log In Now <span
-                                                            style="font-size: 1.5em; vertical-align: middle; margin-left: 5px; line-height: 1;">🚀</span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td
-                                        style="text-align: center; font-family: 'Poppins', Arial, sans-serif; font-size: 1.1em; line-height: 1.7; color: #5d6d7e;">
-                                        <p style="margin: 0;">If you have any questions or need assistance, our
-                                            dedicated support team is here to help. Just reach out!</p>
-                                    </td>
-                                </tr>
-                            </table>
+    <div class="credentials" aria-label="Your login credentials">
+      <p><strong>Email:</strong> {{ $subscriber->email }}</p>
+      <p><strong>Password:</strong> {{ $plainPassword }}</p>
+    </div>
 
-                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td align="center"
-                                        style="font-family: 'Poppins', Arial, sans-serif; font-size: 0.9em; color: #95a5a6; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eceff1;">
-                                        &copy; {{ date('Y') }} Your Company Name. All rights reserved.
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    <div class="content">
+      <p>For your security, we highly recommend changing your password after your first login. Ready to dominate the
+        market?</p>
+    </div>
+
+    <div class="btn-wrapper">
+      <a href="YOUR_LOGIN_PAGE_URL_HERE" target="_blank" rel="noopener" class="btn-login" aria-label="Log In Now">
+        Log In Now
+      </a>
+    </div>
+
+    <div class="content">
+      <p>If you have any questions or need support, our dedicated team is standing by to assist you 24/7.</p>
+    </div>
+
+    <div class="footer-text" aria-label="footer">
+      &copy; {{ date('Y') }} SS7Trader Academy. All rights reserved.<br />
+      Support: <a href="mailto:support@ss7trader.com">support@ss7trader.com</a> | Website: <a
+        href="https://signal.ss7trader.com">signal.ss7trader.com</a><br />
+      Telegram: <a href="https://t.me/SSsevenTrader">@SSsevenTrader</a> | Social: @ss7traderacademy on all platforms
+    </div>
+  </div>
 </body>
 
 </html>

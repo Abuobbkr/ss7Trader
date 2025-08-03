@@ -10,7 +10,7 @@ class SignalController extends Controller
 {
     public function index()
     {
-        $signals = Signal::orderBy("created_at", "desc")->paginate(4); // 10 per page
+        $signals = Signal::with('asset')->orderBy("created_at", "desc")->paginate(4); // 10 per page
         // dd("", $signals);
         return view("frontend.index", compact("signals"));
     }

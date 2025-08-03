@@ -11,7 +11,7 @@ class Signal extends Model
 
     // Allow mass assignment for these fields
     protected $fillable = [
-        'pair_name',
+       
         'signal_type',
         'market_type',
         'entry_price',
@@ -22,6 +22,7 @@ class Signal extends Model
         'entry_price_premium',
         'stop_loss_premium',
         'take_profit_premium',
+        'asset_id', // New field for asset association
     ];
 
     // If you're using timestamps (created_at, updated_at)
@@ -38,4 +39,9 @@ class Signal extends Model
         'stop_loss_premium' => 'boolean',
         'take_profit_premium' => 'boolean',
     ];
+
+    public function asset()
+    {
+        return $this->belongsTo(Asset::class);
+    }
 }
