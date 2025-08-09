@@ -3,8 +3,8 @@
                 <hr>
                 <div class="footer-bottom">
                     <p class="mb-0 text-lg-start text-md-start text-center">
-                        © 2022 Betheme by <a class="text-decoration-none Muffin-group">Muffin group</a> |
-                        All Rights Reserved | Powered by <a class="text-decoration-none Muffin-group">WordPress</a>
+                        © 2016 SS7Trader by <a class="text-decoration-none Muffin-group">SS7Trader Acadmey</a> |
+                        All Rights Reserved 
                     </p>
                 </div>
             </div>

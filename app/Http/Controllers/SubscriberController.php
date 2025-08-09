@@ -48,7 +48,7 @@ class SubscriberController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $Subscribers = Subscriber::orderBy('id','desc')->get();
+            $Subscribers = Subscriber::orderBy('id', 'desc')->get();
 
             return DataTables::of($Subscribers)
                 ->addIndexColumn()
@@ -91,7 +91,7 @@ class SubscriberController extends Controller
                         ? '<button class="btn btn-sm btn-secondary toggle-status" data-id="' . $Subscriber->id . '">Close</button>'
                         : '<button class="btn btn-sm btn-success toggle-status" data-id="' . $Subscriber->id . '">Reopen</button>';
                     // return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
-                    return $editBtn . ' ' . $deleteBtn ;
+                    return $editBtn . ' ' . $deleteBtn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -127,7 +127,6 @@ class SubscriberController extends Controller
 
         try {
             $subscriber = $subscriber->update($validated);
-            dd($subscriber);
 
             return response()->json([
                 'success' => true,

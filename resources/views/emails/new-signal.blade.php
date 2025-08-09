@@ -1,133 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Trading Signal Alert</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>New Trading Signal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- No external fonts. System stack only -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0b0f1a;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .container {
-            max-width: 620px;
-            margin: 0 auto;
-            background: #12192c;
-            border-radius: 10px;
-            padding: 40px 30px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.25);
-        }
-
-        .header {
-            border-bottom: 2px solid #ff69b4;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #ff69b4;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .signal-info {
-            background: #1c2436;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #2f3b57;
-        }
-
-        .signal-info p {
-            font-size: 15px;
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-
-        .signal-info strong {
-            color: #ff69b4;
-            display: inline-block;
-            width: 140px;
-        }
-
-        .footer {
-            border-top: 1px solid #2c344c;
-            margin-top: 40px;
-            padding-top: 25px;
-            font-size: 13px;
-            color: #999;
-            text-align: center;
-        }
-
-        .footer p {
-            margin: 4px 0;
-        }
-
-        .footer a {
-            color: #ff69b4;
-            text-decoration: none;
-        }
-
-        @media screen and (max-width: 620px) {
+        /* Clients ignore <style> mostly, but a few use it. Keep minimal. */
+        @media (max-width:600px) {
             .container {
-                padding: 30px 20px;
+                width: 100% !important
             }
 
-            .header h1 {
-                font-size: 22px;
+            .p-24 {
+                padding: 16px !important
             }
 
-            .signal-info strong {
-                width: 120px;
+            .cta {
+                display: block !important;
+                width: 100% !important
             }
         }
     </style>
 </head>
 
-<body>
-
-    <div class="container">
-        <div class="header">
-            <h1>New Signal Alert</h1>
-        </div>
-
-        <div class="signal-info">
-            <p><strong>Currency Pair:</strong> {{ $signal->pair_name }}</p>
-            <p><strong>Signal Type:</strong> {{ ucfirst($signal->signal_type) }}</p>
-            <p><strong>Market Type:</strong> {{ ucfirst($signal->market_type) }}</p>
-            <p><strong>Entry Price:</strong> {{ number_format($signal->entry_price, 5) }}</p>
-            <p><strong>Stop Loss:</strong> {{ number_format($signal->stop_loss, 5) }}</p>
-            <p><strong>Take Profit:</strong> {{ number_format($signal->take_profit, 5) }}</p>
-            <p><strong>Status:</strong> {{ $signal->is_open ? 'Active' : 'Closed' }}</p>
-        </div>
-
-        <div style="margin-top: 30px; color: #ccc; font-size: 15px; text-align: center;">
-            Stay sharp. More signals are coming.
-            Our expert analysts are always on the charts.
-        </div>
-
-        <div class="footer">
-            <p><strong>SS7Trader Academy</strong></p>
-            <p>Email: <a href="mailto:support@ss7trader.com">support@ss7trader.com</a></p>
-            <p>Website: <a href="https://signal.ss7trader.com">signal.ss7trader.com</a></p>
-            <p>Telegram: <a href="https://t.me/SSsevenTrader">@SSsevenTrader</a></p>
-            <p>Social: @ss7traderacademy on YouTube, IG, FB, X</p>
-            <p style="margin-top: 15px; color: #666;">Risk Warning: Trading financial instruments involves high risk and
-                may not be suitable for all investors. Always trade responsibly.</p>
-            <p>&copy; {{ date('Y') }} SS7Trader Academy. All Rights Reserved.</p>
-        </div>
+<body style="margin:0;padding:0;background:#FBF4F2;">
+    <!-- Preheader (hidden preview text) -->
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;">
+        New {{ ucfirst($signal->market_type) }} signal on {{ strtoupper($signal->asset->pair_name) }} •
+        {{ strtoupper($signal->signal_type) }} • Entry {{ $signal->entry_price }}
     </div>
 
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%"
+        style="background:#FBF4F2;">
+        <tr>
+            <td align="center" style="padding:20px 12px;">
+                <table class="container" role="presentation" cellspacing="0" cellpadding="0" border="0" width="600"
+                    style="width:600px;max-width:600px;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #eee;">
+                    <!-- Header -->
+                    <tr>
+                        <td style="padding:18px 24px;border-bottom:1px solid #f0f2f6;">
+                            <table width="100%" role="presentation">
+                                <tr>
+                                    <td
+                                        style="font:700 18px/1.2 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial; color:#0A0B49;">
+                                        SS7Trader • New Signal
+                                    </td>
+                                    <td align="right"
+                                        style="font:500 12px/1 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#6b6f7b;">
+                                        Sent: {{ now()->format('M d, Y H:i') }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Body -->
+                    <tr>
+                        <td class="p-24" style="padding:24px;">
+                            <p
+                                style="margin:0 0 12px;font:600 20px/1.3 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                {{ strtoupper($signal->asset->pair_name) }} — {{ strtoupper($signal->signal_type) }}
+                            </p>
+                            <p
+                                style="margin:0 0 18px;font:400 14px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#3b3f4a;">
+                                A new {{ ucfirst($signal->market_type) }} signal is available. Manage your risk and
+                                verify levels before executing.
+                            </p>
+
+                            <!-- Data table -->
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
+                                style="border-collapse:collapse;border:1px solid #eef0f5;border-radius:8px;overflow:hidden;">
+                                <tr style="background:#f7f8fb;">
+                                    <td
+                                        style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                        Entry</td>
+                                    <td
+                                        style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                        Stop Loss</td>
+                                    <td
+                                        style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                        Take Profit</td>
+                                    <td
+                                        style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                        Status</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding:12px;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#222;">
+                                        {{ $signal->entry_price }}
+                                    </td>
+                                    <td
+                                        style="padding:12px;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#222;">
+                                        {{ $signal->stop_loss }}
+                                    </td>
+                                    <td
+                                        style="padding:12px;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#222;">
+                                        {{ $signal->take_profit }}
+                                    </td>
+                                    <td
+                                        style="padding:12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#1dbf73;">
+                                        {{ $signal->is_open ? 'Active' : 'Closed' }}
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- CTA -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0"
+                                style="margin:18px 0 0;">
+                                <tr>
+                                    <td>
+                                        <a href="https://signal.ss7trader.com" class="cta"
+                                            style="background:#FF0054;color:#ffffff;text-decoration:none;font:700 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;padding:12px 18px;border-radius:10px;display:inline-block;">
+                                            View in Dashboard
+                                        </a>
+                                    </td>
+                                    <td width="12"></td>
+                                    <td>
+                                        <a href="https://ss7trader.com/premium-signals" class="cta"
+                                            style="background:#0A0B49;color:#ffffff;text-decoration:none;font:700 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;padding:12px 18px;border-radius:10px;display:inline-block;">
+                                            Go Premium — $14.99/mo
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p
+                                style="margin:18px 0 0;font:400 12px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#6b6f7b;">
+                                Note: Levels are provided for educational purposes. Always use your own judgment and
+                                risk management.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding:16px 24px;border-top:1px solid #f0f2f6;background:#fff;">
+                            <p
+                                style="margin:0 0 6px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                SS7Trader Academy
+                            </p>
+                            <p
+                                style="margin:0 0 2px;font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#656b76;">
+                                Support: <a href="mailto:support@ss7trader.com"
+                                    style="color:#0A0B49;text-decoration:none;">support@ss7trader.com</a> ·
+                                Web: <a href="https://ss7trader.com"
+                                    style="color:#0A0B49;text-decoration:none;">ss7trader.com</a>
+                            </p>
+                            <p
+                                style="margin:0 0 8px;font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#656b76;">
+                                Telegram: <a href="https://t.me/SSsevenTrader"
+                                    style="color:#0A0B49;text-decoration:none;">@SSsevenTrader</a>
+                            </p>
+
+                            <!-- Compliance -->
+                            <p
+                                style="margin:8px 0 0;font:400 11px/1.6 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#8a8f9b;">
+                                You’re receiving alerts because you opted in on our website. If you don’t want these
+                                emails,
+                                <a href="{{ $unsubscribeUrl ?? '#' }}"
+                                    style="color:#FF0054;text-decoration:none;">unsubscribe here</a>.
+                                <br>SS7Trader Academy, <span style="white-space:nowrap;">2nd Floor College House, 17
+                                    King Edwards Road, Rui, London</span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- small spacer -->
+                <div style="height:20px;line-height:20px">&nbsp;</div>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>

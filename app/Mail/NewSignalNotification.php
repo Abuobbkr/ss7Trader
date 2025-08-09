@@ -13,8 +13,7 @@ use Illuminate\Queue\SerializesModels;
 // class NewSignalNotification extends Mailable implements ShouldQueue // Added ShouldQueue
 class NewSignalNotification extends Mailable // Added ShouldQueue
 {
-    // use Queueable, SerializesModels;
-    use  SerializesModels;
+    use Queueable, SerializesModels;
 
     /**
      * The signal instance.
@@ -31,7 +30,11 @@ class NewSignalNotification extends Mailable // Added ShouldQueue
      */
     public function __construct(Signal $signal)
     {
-        $this->signal = $signal;
+        // Eager load the 'asset' relationship to avoid N+1 queries
+        $this->signal = $signal->load('asset');
+        // $this->signal = $signal;
+
+
     }
 
     /**
@@ -41,8 +44,13 @@ class NewSignalNotification extends Mailable // Added ShouldQueue
      */
     public function envelope()
     {
+        // Use the 'name' property from the related Asset model
+
+        \Log::info('Creating new signal notification for asset: ' . $this->signal->asset->pair_name);
         return new Envelope(
-            subject: 'New Signal Alert: ' . $this->signal->pair_name . ' (' . ucfirst($this->signal->signal_type) . ')',
+            subject: 'New Signal Alert: ' . $this->signal->asset->pair_name . ' (' . ucfirst($this->signal->signal_type) . ')',
+            // subject: 'New Signal Alert: ' . $this->signal->pair_name . ' (' . ucfirst($this->signal->signal_type) . ')',
+
         );
     }
 
@@ -53,6 +61,8 @@ class NewSignalNotification extends Mailable // Added ShouldQueue
      */
     public function content()
     {
+        \Log::info('Creating new signal notification for asset: ' . $this->signal->asset->pair_name);
+
         return new Content(
             markdown: 'emails.new-signal',
             with: [

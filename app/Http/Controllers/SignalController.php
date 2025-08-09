@@ -98,7 +98,7 @@ class SignalController extends Controller
                     // return $editBtn . ' ' . $deleteBtn . ' ' . $statusBtn;
                     return $editBtn . ' ' . $deleteBtn;
                 })
-                ->rawColumns(['pair_name','market_type', 'signal_type', 'status', 'group_type', 'action', 'stop_loss', 'entry_price', 'take_profit'])
+                ->rawColumns(['pair_name', 'market_type', 'signal_type', 'status', 'group_type', 'action', 'stop_loss', 'entry_price', 'take_profit'])
                 ->make(true);
         }
 
@@ -138,6 +138,7 @@ class SignalController extends Controller
             foreach ($subscribers as $subscriber) {
                 // Send the email to each subscriber
                 // Using Mail::to(). If using queues, this will dispatch to the queue.
+                \Log::info('Sending new signal notification to: ' . $subscriber->email . 'and date is ' . now());
                 Mail::to($subscriber->email)->send(new NewSignalNotification($signal));
             }
 
