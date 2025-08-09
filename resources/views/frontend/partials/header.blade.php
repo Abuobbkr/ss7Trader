@@ -9,6 +9,7 @@
     <meta name="keywords" content="Trading Academy, SS7 Trader, Financial Education, Newsletter, Forex, Crypto" />
     <meta name="author" content="SS7 TRADER Academy" />
     <title>SS7 TRADER Academy | Learn Trading & Financial Skills</title>
+    <link rel="icon" type="image/x-icon" href="https://ss7trader.com/wp-content/uploads/2025/05/e5rhrtyh6rth.png">
 
     <!-- External Fonts & Icons -->
     <link href="{{ asset('frontend/bootstrap/bootstrap.css') }}" rel="stylesheet">
