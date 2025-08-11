@@ -20,8 +20,8 @@
         </section>
     </div>
     <div class="labels">
-       
-       
+
+
 
         <!-- GRID -->
         <section class="ss7-grid">
@@ -50,7 +50,7 @@
                         </select>
                     </div>
 
-                    <div class="table-responsive">
+                    <div class="table-responsive" style="max-width: 100%; overflow-x: auto;">
                         <table class="table table-hover table-striped align-middle mb-0">
                             <thead class="table-light">
                                 <tr>
