@@ -8,9 +8,12 @@
                         alt="{{ $signal->asset->pair_name }}">
                     <div class="d-flex flex-column">
                         <span class="fw-bold">{{ strtoupper($signal->asset->pair_name) }}</span>
-                        <small class="{{ $signal->signal_type == 'buy' ? 'text-success' : 'text-danger' }} d-md-none">
-                            {{ strtoupper($signal->signal_type) }}
-                        </small>
+                        <div>
+
+                            <small class="fw-bold {{ $signal->is_open == '1' ? 'text-success' : 'text-danger' }} ">
+                                {{ $signal->is_open == '1' ? 'Active' : 'Closed' }}...
+                            </small>
+                        </div>
                     </div>
                 @else
                     <div class="d-flex flex-column">

@@ -28,7 +28,7 @@ class SubscriberController extends Controller
             $subscriber = Subscriber::create($validated);
 
             // Send email with raw password
-            Mail::to($subscriber->email)->send(new SubscriberCredntialMail($subscriber, '12345'));
+            Mail::to($subscriber->email)->send(new SubscriberCredntialMail($subscriber, $validated['password']));
 
 
             return response()->json([
