@@ -24,8 +24,7 @@ class SignalController extends Controller
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $signals = Signal::with('asset')->latest()->get(); // Use get() to execute the query
-
+            $signals = Signal::with('asset')->orderBy('id', 'desc')->get();
             return DataTables::of($signals)
                 ->addIndexColumn()
                 ->addColumn('serial_number', function ($signal) {
@@ -54,19 +53,16 @@ class SignalController extends Controller
                     return '<span class="badge ' . $badgeClass . '">' . $signal->signal_type . '</span>';
                 })
                 ->addColumn('entry_price', function ($signal) {
-                    $badge = $signal->entry_price_premium ? '<span class="badge bg-warning  ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
-
-                    return number_format($signal->entry_price, 5) . $badge;
+                    $badge = $signal->entry_price_premium ? '<span class="badge bg-warning ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
+                    return $signal->entry_price . $badge; // Removed number_format()
                 })
                 ->addColumn('stop_loss', function ($signal) {
-                    $badge = $signal->stop_loss_premium ? '<span class="badge bg-warning  ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
-
-                    return number_format($signal->stop_loss, 5) . $badge;
+                    $badge = $signal->stop_loss_premium ? '<span class="badge bg-warning ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
+                    return $signal->stop_loss . $badge; // Removed number_format()
                 })
                 ->addColumn('take_profit', function ($signal) {
-                    $badge = $signal->take_profit_premium ? '<span class="badge bg-warning  ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
-
-                    return number_format($signal->take_profit, 5) . $badge;
+                    $badge = $signal->take_profit_premium ? '<span class="badge bg-warning ms-2 py-0.5 px-1 text-sm">Premium</span>' : '';
+                    return $signal->take_profit . $badge; // Removed number_format()
                 })
                 ->addColumn('status', function ($signal) {
                     return $signal->is_open

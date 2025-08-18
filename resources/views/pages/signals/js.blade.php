@@ -28,6 +28,7 @@
         var table = $('#signals-table').DataTable({
             processing: true,
             serverSide: true,
+            order: [[0, 'desc']], 
             ajax: {
                 url: "{{ route('signals.getData') }}",
                 beforeSend: function () {
