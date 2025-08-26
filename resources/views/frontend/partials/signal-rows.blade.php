@@ -50,6 +50,18 @@
 
         <td class="py-4">
             @if ($isSubscriber)
+                {{ $signal->stop_loss }}
+            @elseif($signal->stop_loss_premium == 1)
+                <a href="https://www.ss7trader.com/signals" target="_blank" rel="noopener noreferrer">
+                    <span class="badge bg-warning">Premium</span>
+                </a>
+            @else
+                {{ $signal->stop_loss }}
+            @endif
+        </td>
+
+        <td class="py-4">
+            @if ($isSubscriber)
                 {{ $signal->take_profit }}
             @elseif($signal->take_profit_premium == 1)
                 <a href="https://www.ss7trader.com/signals" target="_blank" rel="noopener noreferrer">
@@ -60,17 +72,7 @@
             @endif
         </td>
 
-        <td class="py-4">
-            @if ($isSubscriber)
-                {{ $signal->stop_loss }}
-            @elseif($signal->stop_loss_premium == 1)
-                <a href="https://www.ss7trader.com/signals" target="_blank" rel="noopener noreferrer">
-                    <span class="badge bg-warning">Premium</span>
-                </a>
-            @else
-                {{ $signal->stop_loss }}
-            @endif
-        </td>
+        
         {{-- End of new logic --}}
 
         <td class="py-4">
