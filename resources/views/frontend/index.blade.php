@@ -105,16 +105,15 @@
                             </span>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                        <!-- <li class="nav-item dropdown"> -->
+                        <li class="">
+                            <a class="" href="#" id="" role="button"
+                                >
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode(session('subscriber_user_name')) }}&background=fe0061&color=fff&bold=true"
                                     alt="User Profile" class="rounded-circle"
                                     style="width: 38px; height: 38px; border: 2px solid #fff;">
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -127,7 +126,7 @@
                                         @csrf
                                     </form>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </li>
                     @endif
                 </ul>
