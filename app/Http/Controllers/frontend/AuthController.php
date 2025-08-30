@@ -26,6 +26,7 @@ class AuthController extends Controller
 
         if ($user) {
             session(['subscriber_user_id' => $user->id]);
+            session(['subscriber_user_name' => $user->username]);
             return redirect()->route('frontend.signal.index');
         }
 

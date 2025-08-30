@@ -4,6 +4,138 @@
 
 @section('frontend-content')
 
+
+
+
+    <style>
+        /* Variables for a cleaner look */
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+        }
+
+        .navbar-brand .badge {
+            background-color: var(--primary-color) !important;
+            padding: 8px 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+        }
+
+        .navbar {
+            background-color: #fff !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 1rem 0;
+        }
+
+        .nav-link {
+            color: var(--secondary-color) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            color: var(--primary-color) !important;
+        }
+
+        .nav-item .nav-link.active,
+        .nav-item .nav-link.fw-bold {
+            color: var(--primary-color) !important;
+            position: relative;
+        }
+
+        .nav-item .nav-link.active::after,
+        .nav-item .nav-link.fw-bold::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 50px;
+        }
+
+        .dropdown-menu {
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn.rounded-pill {
+            font-weight: 600;
+        }
+
+        .btn-outline-primary {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color) !important;
+            color: #fff !important;
+        }
+    </style>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ route('frontend.signal.index') }}">
+                <img src="https://ss7trader.com/wp-content/uploads/2025/05/SS7-TRADER-Academy-1-Edited.png#127"
+                    style="width: 200px;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    @if(session('subscriber_user_name'))
+                        {{-- Greeting message --}}
+                        <li class="nav-item d-flex align-items-center me-3">
+                            <span class="fw-semibold" style="color:#fe0061;">
+                                Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is live.
+                            </span>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode(session('subscriber_user_name')) }}&background=fe0061&color=fff&bold=true"
+                                    alt="User Profile" class="rounded-circle"
+                                    style="width: 38px; height: 38px; border: 2px solid #fff;">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href=""
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
     <div class="ss7-wrap">
 
         <!-- HERO -->
@@ -20,8 +152,6 @@
         </section>
     </div>
     <div class="labels">
-
-
 
         <!-- GRID -->
         <section class="ss7-grid">
