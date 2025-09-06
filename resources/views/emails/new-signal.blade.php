@@ -85,6 +85,9 @@
                                     <td
                                         style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
                                         Status</td>
+                                    <td
+                                        style="padding:10px 12px;font:700 12px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;color:#0A0B49;">
+                                        Status</td>
                                 </tr>
                                 <tr>
                                     <td
@@ -117,12 +120,7 @@
                                         </a>
                                     </td>
                                     <td width="12"></td>
-                                    <td>
-                                        <a href="https://ss7trader.com/premium-signals" class="cta"
-                                            style="background:#0A0B49;color:#ffffff;text-decoration:none;font:700 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;padding:12px 18px;border-radius:10px;display:inline-block;">
-                                            Go Premium — $14.99/mo
-                                        </a>
-                                    </td>
+                                   
                                 </tr>
                             </table>
 
