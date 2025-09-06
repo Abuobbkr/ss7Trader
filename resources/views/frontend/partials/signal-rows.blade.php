@@ -25,7 +25,7 @@
                 @endif
             </div>
         </td>
-        <td class="d-none d-md-table-cell py-4">
+        <td class=" d-md-table-cell py-4">
             <span
                 class="badge {{ $signal->signal_type == 'buy' ? 'bg-success' : 'bg-danger' }}">{{ strtoupper($signal->signal_type) }}</span>
         </td>
