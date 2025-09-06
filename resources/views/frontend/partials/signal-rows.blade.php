@@ -1,5 +1,9 @@
 @foreach($signals as $signal)
     <tr>
+
+        {{-- Assuming created_at is a Carbon instance --}}
+        {{-- If not, you might need to convert it first using \Carbon\Carbon::parse($signal->created_at) --}}
+        {{-- Example: <td class="py-4">{{ \Carbon\Carbon::parse($signal->created_at)->format('d M Y') }}</td> --}}
         <td data-label="Pair" class="text-nowrap">
             <div class="d-flex align-items-center">
                 @if($signal->asset)
@@ -24,6 +28,8 @@
                     </div>
                 @endif
             </div>
+            <span
+                class="badge bg-primary text-sm text-center">{{ \Carbon\Carbon::parse($signal->created_at)->format('d M Y') }}</span>
         </td>
         <td class=" d-md-table-cell py-4">
             <span
@@ -72,7 +78,20 @@
             @endif
         </td>
 
-        
+        <td class="py-4">
+
+            @if ($signal->trade_result == 'tp')
+                <span class="badge bg-success">TP</span>
+            @elseif ($signal->trade_result == 'sl')
+                <span class="badge bg-danger">SL</span>
+            @elseif ($signal->trade_result == 'be')
+                <span class="badge bg-secondary">BE</span>
+            @else
+                <span class="badge bg-info">N/A</span>
+            @endif
+
+        </td>
+
         {{-- End of new logic --}}
 
         <td class="py-4">

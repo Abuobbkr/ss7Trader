@@ -28,7 +28,7 @@
         var table = $('#signals-table').DataTable({
             processing: true,
             serverSide: true,
-            order: [[0, 'desc']], 
+            order: [[0, 'desc']],
             ajax: {
                 url: "{{ route('signals.getData') }}",
                 beforeSend: function () {
@@ -252,6 +252,7 @@
                 $('[name="take_profit"]').val(response.take_profit);
                 $('[name="signal_type"]').val(response.signal_type);
                 $('[name="group_type"]').val(response.group_type);
+                $('[name="trade_result"]').val(response.trade_result);
                 $('#is-open-switch').prop('checked', response.is_open);
 
                 // Populate the new premium switches based on the response data
@@ -304,6 +305,9 @@
                 },
                 group_type: {
                     required: true
+                },
+                trade_result: {
+                    required: false
                 }
             },
             messages: {
@@ -387,13 +391,17 @@
                     stop_loss: $('[name="stop_loss"]').val(),
                     take_profit: $('[name="take_profit"]').val(),
                     group_type: $('[name="group_type"]').val(),
+                    trade_result: $('[name="trade_result"]').val(),
                     is_open: $('#is-open-switch').is(':checked') ? 1 : 0,
                     entry_price_premium: $('#entry-price-switch').is(':checked') ? 1 : 0,
                     stop_loss_premium: $('#stop-loss-switch').is(':checked') ? 1 : 0,
                     take_profit_premium: $('#take-profit-switch').is(':checked') ? 1 : 0,
                     _token: $('meta[name="csrf-token"]').attr('content')
                 };
+
                 console.log('Form data:', formData);
+
+                
                 // Determine if edit or create
                 const isEditMode = $(form).attr('data-mode') === 'edit';
                 const signalId = $(form).attr('data-id');

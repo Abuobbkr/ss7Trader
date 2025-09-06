@@ -18,6 +18,7 @@ class Signal extends Model
         'stop_loss',
         'take_profit',
         'group_type',
+        'trade_result', // New field for trade result
         'is_open',
         'entry_price_premium',
         'stop_loss_premium',

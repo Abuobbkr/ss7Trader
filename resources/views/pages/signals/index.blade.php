@@ -121,7 +121,7 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <label class="form-label">Group Type <span class="text-danger">*</span></label>
                                             <select class="form-select" name="group_type">
                                                 <option value="free">Free</option>
@@ -129,7 +129,17 @@
                                                 <option value="both">Both</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-6 d-flex align-items-center">
+
+                                        <div class="col-md-4">
+                                            <label class="form-label">Trade Result </label>
+                                            <select class="form-select" name="trade_result">
+                                                <option value="">Please select one</option>
+                                                <option value="tp">TP</option>
+                                                <option value="sl">SL</option>
+                                                <option value="be">BE</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 d-flex align-items-center">
                                             <div class="form-check form-switch">
                                                 <input class="form-check-input" type="checkbox" id="is-open-switch"
                                                     name="is_open" checked>

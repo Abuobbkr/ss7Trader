@@ -63,7 +63,7 @@
                                     <th scope="col">Entry Price</th>
                                     <th scope="col">Stop Loss</th>
                                     <th scope="col">Take Profit</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Result</th>
                                 </tr>
                             </thead>
                             <tbody>

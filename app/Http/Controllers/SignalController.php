@@ -107,7 +107,6 @@ class SignalController extends Controller
 
     public function store(Request $request)
     {
-        // return ($request->all()); // Debugging line to check request data
         $validated = $request->validate([
             'asset_id' => 'required|exists:assets,id', // Ensure asset_id exists in assets table
             'market_type' => 'required|string|in:forex,crypto,stock',
@@ -120,6 +119,7 @@ class SignalController extends Controller
             'entry_price_premium' => 'boolean',
             'stop_loss_premium' => 'boolean',
             'take_profit_premium' => 'boolean',
+            'trade_result' => 'nullable|in:tp,sl,be',
         ]);
 
         try {
@@ -175,6 +175,8 @@ class SignalController extends Controller
             'entry_price_premium' => 'boolean',
             'stop_loss_premium' => 'boolean',
             'take_profit_premium' => 'boolean',
+            'trade_result' => 'nullable|in:tp,sl,be',
+
         ]);
 
         try {
