@@ -4,9 +4,6 @@
 
 @section('frontend-content')
 
-
-
-
     <style>
         /* Variables for a cleaner look */
         :root {
@@ -98,35 +95,18 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @if(session('subscriber_user_name'))
-                        {{-- Greeting message --}}
                         <li class="nav-item d-flex align-items-center me-3">
                             <span class="fw-semibold" style="color:#fe0061;">
                                 Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is live.
                             </span>
                         </li>
 
-                        <!-- <li class="nav-item dropdown"> -->
                         <li class="">
-                            <a class="" href="#" id="" role="button"
-                                >
+                            <a class="" href="#" id="" role="button">
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode(session('subscriber_user_name')) }}&background=fe0061&color=fff&bold=true"
                                     alt="User Profile" class="rounded-circle"
                                     style="width: 38px; height: 38px; border: 2px solid #fff;">
                             </a>
-                            <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href=""
-                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-                                    <form id="logout-form" action="" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </li>
-                            </ul> -->
                         </li>
                     @endif
                 </ul>
@@ -134,10 +114,8 @@
         </div>
     </nav>
 
-
     <div class="ss7-wrap">
 
-        <!-- HERO -->
         <section class="ss7-hero container-fluid">
             <span class="badge badge-pill badge-primary"><span class="dot"></span> SS7Trader • Live Signals</span>
             <h1 class="display-4 text-center my-4">Forex, Stocks, Crypto & Gold Signals</h1>
@@ -152,10 +130,8 @@
     </div>
     <div class="labels">
 
-        <!-- GRID -->
         <section class="ss7-grid">
 
-            <!-- LEFT: YOUR TABLE AREA (UNTOUCHED) -->
             <div class="card table-shell reveal">
                 <div class="table-note">
                     <div class="updated">Last update: <b>just now</b></div>
@@ -166,7 +142,6 @@
                     </div>
                 </div>
 
-                <!-- ✅ YOUR EXISTING TABLE (unchanged) -->
                 <div class="card-body p-3">
                     <div class="d-flex align-items-center mb-3">
                         <label for="signalTypeFilter" class="form-label mb-0 me-2 text-muted fw-bold">Filter by
@@ -201,9 +176,7 @@
                         {{ $signals->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
-                <!-- /YOUR TABLE -->
 
-                <!-- Optional ad banner under table -->
                 <a class="banner blue reveal" href="https://buy.stripe.com/eVq00jaVhfqkgfv41Z8IU00" target="_blank">
                     <div class="inner">
                         <div class="kicker">Exclusive Offer</div>
@@ -214,7 +187,6 @@
                 </a>
             </div>
 
-            <!-- RIGHT: SIDEBAR (BROKER ADS + BANNERS) -->
             <aside class="side-stack">
                 <div class="card reveal">
                     <div class="side-title">
@@ -307,7 +279,6 @@
             </aside>
         </section>
 
-        <!-- HOW TO USE -->
         <section class="howto">
             <div class="how-grid">
                 <div class="how reveal">
@@ -328,7 +299,6 @@
             </div>
         </section>
 
-        <!-- BOTTOM CTA -->
         <section class="bottom-cta">
             <div class="cta-box reveal">
                 <h3>Questions or want Premium access?</h3>
@@ -358,27 +328,19 @@
 @push('scripts')
     <script>
         function filterSignals() {
-
             console.log('Filtering signals...');
             const type = document.getElementById('signalTypeFilter').value;
-
-            // ✅ FIXED: add backticks so Blade route becomes a string inside template literal
             fetch(`{{ route('signals.filter') }}?market_type=${type}`)
                 .then(res => res.json())
                 .then(data => {
-                    // scope to this table area only
                     const tableShell = document.querySelector('.card.table-shell');
                     if (!tableShell) return;
-
                     const tbody = tableShell.querySelector('tbody');
                     if (tbody) tbody.innerHTML = data.html;
-
                     const pagWrap = tableShell.querySelector('.mt-4.d-flex.justify-content-end');
                     if (pagWrap) pagWrap.innerHTML = data.pagination;
                 })
                 .catch(err => console.error(err));
         }
-
-
     </script>
 @endpush
