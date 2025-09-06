@@ -87,7 +87,7 @@
             @elseif ($signal->trade_result == 'be')
                 <span class="badge bg-secondary">BE</span>
             @else
-                <span class="badge bg-info">N/A</span>
+                <span class="badge bg-info">Pending</span>
             @endif
 
         </td>
