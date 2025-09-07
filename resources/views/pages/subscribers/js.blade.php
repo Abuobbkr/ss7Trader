@@ -45,7 +45,6 @@
                 { data: 'email', name: 'email' },
 
                 { data: 'password', name: 'password' },
-                { data: 'expire_at', name: 'expire_at' },
                 { data: 'created_at', name: 'created_at' },
 
                 {

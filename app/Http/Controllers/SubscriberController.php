@@ -8,6 +8,13 @@ use Yajra\DataTables\Facades\DataTables;
 use App\Mail\SubscriberCredntialMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules;
+
 class SubscriberController extends Controller
 {
     public function index()
@@ -17,38 +24,45 @@ class SubscriberController extends Controller
 
     public function store(Request $request)
     {
+        // Validate like Breeze, but keep your username field
         $validated = $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required',
-            'password' => 'required',
-
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required'],
         ]);
 
+
+        // Create user as a subscriber
+        $user = User::create([
+            'name' => $validated['username'],
+            'email' => $validated['email'],
+            'raw' => $validated['password'],
+            'password' => Hash::make($validated['password']),
+            'role' => 'subscriber',
+        ]);
+
+
+        // Send credential email (raw password) – be cautious in production
         try {
-            $subscriber = Subscriber::create($validated);
-
-            // Send email with raw password
-            Mail::to($subscriber->email)->send(new SubscriberCredntialMail($subscriber, $validated['password']));
-
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Subscriber created successfully',
-                'data' => $subscriber
-            ]);
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error creating Subscriber: ' . $e->getMessage()
-            ], 500);
+            Mail::to($user->email)->send(new SubscriberCredntialMail($user, $validated['password']));
+        } catch (\Throwable $e) {
+            report($e); // don't block signup if mail fails
         }
+
+        // Auto-login and go to subscriber area
+        Auth::login($user);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Subscriber created successfully',
+            'data' => $user
+        ]);
     }
 
     public function getData(Request $request)
     {
         if ($request->ajax()) {
-            $Subscribers = Subscriber::orderBy('id', 'desc')->get();
+            $Subscribers = User::orderBy('id', 'desc')->get();
 
             return DataTables::of($Subscribers)
                 ->addIndexColumn()
@@ -56,7 +70,7 @@ class SubscriberController extends Controller
                     return $Subscriber->id;
                 })
                 ->addColumn('username', function ($Subscriber) {
-                    return $Subscriber->username;
+                    return $Subscriber->name;
                 })
                 ->addColumn('email', function ($Subscriber) {
                     return $Subscriber->email;
@@ -65,16 +79,9 @@ class SubscriberController extends Controller
                     return '<span class="badge ' . $badgeClass . '">' . $Subscriber->Subscriber_type . '</span>';
                 })
                 ->addColumn('password', function ($Subscriber) {
-                    return $Subscriber->password;
+                    return $Subscriber->raw ?? "";
 
                     return number_format($Subscriber->entry_price, 5);
-                })
-                ->addColumn('expire_at', function ($Subscriber) {
-                    return $Subscriber->expire_at
-                        ? $Subscriber->expire_at->format('Y-m-d H:i:s')
-                        : 'N/A';
-
-                    return number_format($Subscriber->stop_loss, 5);
                 })
                 ->addColumn('created_at', function ($Subscriber) {
                     return $Subscriber->created_at

@@ -14,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'subscriber.auth' => \App\Http\Middleware\SubscriberAuth::class,
+            'role' => \App\Http\Middleware\RoleMiddleware::class, // optional
+    
 
 
         ]);

@@ -106,7 +106,6 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Password</th>
-                                        <th>Expire Date</th>
                                         <th>Created Date</th>
                                        
                                         <th>Actions</th>
