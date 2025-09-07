@@ -96,8 +96,8 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     @if(session('subscriber_user_name'))
                         <li class="nav-item d-flex align-items-center me-3">
-                            <span class="fw-semibold" style="color:#fe0061;">
-                                Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is live.
+                            <span style="color:#fe0061; background-color: #f3f4f6;">
+                               <b> Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is Live.</b>
                             </span>
                         </li>
 
