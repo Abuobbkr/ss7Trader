@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->decimal('take_profit', 10, 5); // Changed from take_profit_1
             $table->boolean('is_open')->default(true); // Default to true when created
             $table->string('group_type'); // 'free', 'premium', 'both'
-            $table->enum('market_type', ['crypto', 'forex', 'stocks']);
+            $table->enum('market_type', ['crypto', 'forex', 'stocks','indices','commodities']);
             $table->enum('signal_type', ['buy', 'sell']);
 
             $table->timestamps();

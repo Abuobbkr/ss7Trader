@@ -97,7 +97,7 @@
                     @if(session('subscriber_user_name'))
                         <li class="nav-item d-flex align-items-center me-3">
                             <span style="color:#fe0061; background-color: #f3f4f6;">
-                               <b> Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is Live.</b>
+                                <b> Welcome back, {{ session('subscriber_user_name') }}! Premium Dashboard is Live.</b>
                             </span>
                         </li>
 
@@ -151,6 +151,8 @@
                             <option value="forex">Forex</option>
                             <option value="crypto">Crypto</option>
                             <option value="stock">Stock</option>
+                            <option value="indices">Indices</option>
+                            <option value="commodities">Commodities</option>
                         </select>
                     </div>
 
@@ -181,10 +183,11 @@
 
                 <a class="banner blue reveal" href="https://buy.stripe.com/eVq00jaVhfqkgfv41Z8IU00" target="_blank">
                     <div class="inner">
-                        <div class="kicker">Exclusive Offer</div>
-                        <h4>Join Premium for $14.99/month</h4>
-                        <p>Get unlimited access to Forex, Crypto, Stocks & Gold premium signals. Cancel anytime.</p>
-                        <span class="cta">Buy Subscription</span>
+                        <div class="kicker"> </div>
+                        <h4>Funded Account Help</h4>
+                        <p>Step-by-step guidance to pass FTMO & MyForexFunds challenges. Proven strategies, risk control &
+                            coaching to secure your funded account.</p>
+                        <span class="cta">Get Help Now</span>
                     </div>
                 </a>
             </div>
@@ -262,20 +265,24 @@
 
                 <a class="banner pink reveal" href="https://buy.stripe.com/eVq00jaVhfqkgfv41Z8IU00" target="_blank">
                     <div class="inner">
-                        <div class="kicker">Premium Access</div>
-                        <h4>Only $14.99/month</h4>
-                        <p>Unlock full TP/SL, extra signals & priority alerts with 95%+ accuracy. Instant access after
-                            payment.</p>
-                        <span class="cta">Upgrade Now</span>
+                        <div class="kicker">Mentorship Sessions (Private Coaching)
+                        </div>
+                        <h4>Book 1-on-1 mentorship sessions with our trading experts.
+                        </h4>
+                        <p>Personalized strategy breakdowns, account growth plans, and direct Q&A.
+                        </p>
+                        <span class="cta">Book a Mentorship Session</span>
                     </div>
                 </a>
 
                 <a class="banner navy reveal" href="https://buy.stripe.com/eVq00jaVhfqkgfv41Z8IU00" target="_blank">
                     <div class="inner">
-                        <div class="kicker">Premium Dashboard</div>
-                        <h4>Log in to your signals hub</h4>
-                        <p>View full TP/SL levels, extra signals & priority alerts. $14.99/month.</p>
-                        <span class="cta">Go to Dashboard</span>
+                        <div class="kicker">Automated Tools (MT4/MT5)
+                        </div>
+                        <h4>Download ready-to-use Expert Advisor's for MT4/MT5.
+                        </h4>
+                        <p>Auto-trading features with adjustable risk settings.</p>
+                        <span class="cta">Get Your EA Tools</span>
                     </div>
                 </a>
             </aside>
