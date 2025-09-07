@@ -45,6 +45,7 @@
                 { data: 'email', name: 'email' },
 
                 { data: 'password', name: 'password' },
+                { data: 'role', name: 'role' },
                 { data: 'created_at', name: 'created_at' },
 
                 {

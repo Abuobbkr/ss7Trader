@@ -106,6 +106,7 @@
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>Password</th>
+                                        <th>Role</th>
                                         <th>Created Date</th>
                                        
                                         <th>Actions</th>

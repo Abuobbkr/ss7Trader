@@ -83,6 +83,11 @@ class SubscriberController extends Controller
 
                     return number_format($Subscriber->entry_price, 5);
                 })
+                ->addColumn('role', function ($Subscriber) {
+                    return $Subscriber->role ?? "";
+
+                    return number_format($Subscriber->entry_price, 5);
+                })
                 ->addColumn('created_at', function ($Subscriber) {
                     return $Subscriber->created_at
                         ? $Subscriber->created_at->format('Y-m-d H:i:s')

@@ -101,12 +101,27 @@
                             </span>
                         </li>
 
-                        <li class="">
-                            <a class="" href="#" id="" role="button">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode(session('subscriber_user_name')) }}&background=fe0061&color=fff&bold=true"
                                     alt="User Profile" class="rounded-circle"
                                     style="width: 38px; height: 38px; border: 2px solid #fff;">
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item d-flex bg-transparent border-0">
+                                            <i class="ti ti-logout fs-18 me-2 op-7"></i>Log Out
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                     @endif
                 </ul>
