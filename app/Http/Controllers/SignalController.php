@@ -164,7 +164,7 @@ class SignalController extends Controller
         $signal = Signal::findOrFail($id); // Throws 404 if not found
         $validated = $request->validate([
             'asset_id' => 'required|exists:assets,id', // Ensure asset_id exists in assets table
-            'market_type' => 'required|string|in:forex,crypto,stock', // Corrected 'stocks' to 'stock' if it was a typo
+            'market_type' => 'required|string|in:forex,crypto,stock,indices,commodities',
             'entry_price' => 'required|numeric|min:0.00001',
             'stop_loss' => 'required|numeric|min:0.00001',
             'take_profit' => 'required|numeric|min:0.00001',
