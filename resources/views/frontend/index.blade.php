@@ -166,8 +166,8 @@
                             <option value="forex">Forex</option>
                             <option value="crypto">Crypto</option>
                             <option value="stock">Stock</option>
-                            <option value="indices">Indices</option>
                             <option value="commodities">Commodities</option>
+                            <option value="indices">Indices</option>
                         </select>
                     </div>
 
