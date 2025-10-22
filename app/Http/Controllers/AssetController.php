@@ -169,7 +169,7 @@ class AssetController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'pair_name' => 'required|string|max:255',
-            'market_type' => 'required|string|in:forex,crypto,stock',
+            'market_type' => 'required|string|in:forex,crypto,stock,indices,commodities',
             'asset_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -248,7 +248,7 @@ class AssetController extends Controller
         // 2. Validate the incoming request data for update
         $validator = Validator::make($request->all(), [
             'pair_name' => 'required|string|max:255',
-            'market_type' => 'required|string|in:forex,crypto,stock',
+            'market_type' => 'required|string|in:forex,crypto,stock,indices,commodities',
             // 'asset_image' is nullable for updates, meaning user might not upload a new image.
             'asset_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'timestamp' => 'nullable|date',
